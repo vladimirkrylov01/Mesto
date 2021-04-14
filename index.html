@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Страница путешественника"/>
+	<meta name="author" content="Владимир Крылов"/>
+	<!-- ( NO-BEM! ) <link rel="stylesheet" href="./style.css"/>-->
+	<!-- ( BEM! ) <link rel="stylesheet" href="./pages/index.css">-->
+	<link rel="stylesheet" href="./pages/index.css">
+	<!--		<link rel="stylesheet" href="style.css">-->
+	<title>Место</title>
+</head>
+<body class="main-container">
+<div class="wrapper">
+	<div class="page">
+		<!-- шапка сайта -->
+		<header class="header">
+			<a target="_self" href="#">
+				<img class="header__logo" src="./images/header/header__logo.svg" alt="Логотип Mesto">
+			</a>
+		</header>
+		<!--  обёртку main добавил -->
+		<main class="content">
+
+			<!-- секции сайта -->
+			<section class="profile">
+				<div class="profile__content">
+					<img class="profile__avatar" src="./images/profile/profileImage.jpg" alt="Жак-Ив Кусто">
+					<div class="profile__info">
+						<div class="profile__edit">
+							<h1 class="profile__title">Жак-Ив Кусто</h1>
+							<p class="profile__profession">Исследователь океана</p>
+						</div>
+						<button class="profile__button-edit" type="button"></button>
+					</div>
+				</div>
+				<button class="profile__button-add" type="button"></button>
+			</section>
+			<!-- секции сайта -->
+			<section class="cards-grid">
+				<template class="cards-grid-template">
+					<article class="card">
+						<button class="card__delete-button"></button>
+						<img class="card__image" src="" alt="">
+						<div class="card__content">
+							<h2 class="card__title"></h2>
+							<button class="card__like" type="button" aria-label="Оценить"></button>
+						</div>
+					</article>
+				</template>
+			</section>
+		</main>
+		<!-- подвал сайта -->
+		<footer class="footer">
+			<p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+		</footer>
+	</div>
+</div>
+<div class="popup popup-type-edit">
+	<div class="popup__container">
+		<button class="popup__button-close" type="button" aria-label="Закрыть"></button>
+		<h2 class="popup__title">Редактировать профиль</h2>
+		<form class="popup__form" name="editPopupForm">
+			<input class="popup__input popup__input_type_name" type="text" required value="" name="name" placeholder="Имя">
+			<input class="popup__input popup__input_type_prof" type="text" required value="" name="profession" placeholder="Профессия">
+			<button class="popup__button-submit" type="submit">Сохранить</button>
+		</form>
+	</div>
+</div>
+
+<div class="popup popup-type-add-card">
+	<div class="popup__container">
+		<button class="popup__button-close" type="button" aria-label="Закрыть"></button>
+		<h2 class="popup__title">Новое место</h2>
+		<form class="popup__form" name="addPopupForm">
+			<input class="popup__input popup__input_type_place" type="text" required value="" name="place" placeholder="Название">
+			<input class="popup__input popup__input_type_link" type="text" required value="" name="link" placeholder="Ссылка на картинку">
+			<button class="popup__button-submit" type="submit">Создать</button>
+		</form>
+	</div>
+</div>
+
+<div class="popup popup-type-image">
+	<div class="popup__preview">
+		<figure class="popup__figure">
+			<img class="popup__image" src="" alt="">
+			<figcaption class="popup__image-caption"></figcaption>
+			<button class="popup__button-close popup-type-image__button-close" type="button" aria-label="Закрыть"></button>
+		</figure>
+	</div>
+</div>
+<script src="scripts/initial-cards.js"></script>
+<script src="scripts/script.js"></script>
+</body>
+</html>
