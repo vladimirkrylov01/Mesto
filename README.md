@@ -1,17 +1,33 @@
-# Проект 4: Место
+<h1 align="center">Проект "Mesto"</h1>
 
-### Обзор
+Проект на основе HTML5, CSS3, Javascript.  
+Файловая структура по БЭМ.
 
-* Figma
-* Картинки
+`HTML`+`CSS`:
+* Флекс-бокс
+* Грид-сетка
+* Медиа-запросы
+* Адаптивная вёрстка
 
-**Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+`JavaScript` : 
+* Открытие попап при нажатии кнопки "Редкатировать". 
+* Закрытия попап при нажатии кнопки кнопки "X"
 
-**Картинки**
+`Посмотреть как выглядит сайт можно по ссылке -` https://vladimirkrylov01.github.io/mesto/  
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+-----------------------------------------------------------------
+<h1 align="center">The project "Mesto"</h1>
 
-Удачи!
+
+HTML+CSS:
+* Flexbox
+* Grid
+* Media-queries
+* Adaptive layout
+
+BEM file structure.
+
+
+You can see how the site looks like following the link - https://vladimirkrylov01.github.io/mesto/
+
