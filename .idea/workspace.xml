@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60983f6c-72bb-4c70-82cc-e8062db14b3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../adventures" beforeDir="false" afterPath="$PROJECT_DIR$/../adventures" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../how-to-learn" beforeDir="false" afterPath="$PROJECT_DIR$/../how-to-learn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../russian-travel" beforeDir="false" afterPath="$PROJECT_DIR$/../russian-travel" afterDir="false" />
@@ -91,7 +91,7 @@
       <workItem from="1618328067610" duration="30612000" />
       <workItem from="1618410278129" duration="48000" />
       <workItem from="1618410802148" duration="778000" />
-      <workItem from="1618411802157" duration="649000" />
+      <workItem from="1618411802157" duration="1006000" />
     </task>
     <servers />
   </component>
