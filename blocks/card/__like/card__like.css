@@ -1,0 +1,18 @@
+.card__like{
+    border: none;
+    width: 22px;
+    height: 19px;
+    cursor: pointer;
+    margin-right: 19px;
+    background: url('../../../images/like/like-disabled.svg') center no-repeat;
+    transition: opacity .25s ease;
+    padding-left: 20px;
+    -webkit-tap-highlight-color: transparent;
+}
+.card__like:focus{
+    outline: none;
+    border: none;
+}
+.card__like:hover{
+    opacity: 50%;
+}
