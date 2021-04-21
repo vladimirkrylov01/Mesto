@@ -2,5 +2,5 @@
     display: flex;
     visibility: visible;
     opacity: 1;
-    transition: all .5s linear;
+    transition: opacity .3s ease-in-out;
 }

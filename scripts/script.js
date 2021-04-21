@@ -1,3 +1,40 @@
+// ==================  Edit Modal  ==================
+
+const modalEditWindow = document.querySelector('.popup-type-edit')
+const modalEditOpenBtn = document.querySelector('.profile__button-edit')
+const modalEditCloseBtn = modalEditWindow.querySelector('.popup__button-close')
+const modalEditInputName = modalEditWindow.querySelector('.popup__input_type_name')
+const modalEditInputProf = modalEditWindow.querySelector('.popup__input_type_prof')
+
+
+// ==================  Add Modal  ==================
+
+const modalAddCardWindow = document.querySelector('.popup-type-add-card')
+const modalAddCardOpenBtn = document.querySelector('.profile__button-add')
+const modalAddCardInputTitle = modalAddCardWindow.querySelector('.popup__input_type_place')
+const modalAddCardInputLink = modalAddCardWindow.querySelector('.popup__input_type_link')
+const modalAddCardCloseBtn = modalAddCardWindow.querySelector('.popup__button-close')
+
+// ==================  Preview Modal  ==================
+
+const modalImageWindow = document.querySelector('.popup-type-image')
+const modalImageCloseBtn = modalImageWindow.querySelector('.popup__button-close')
+const modalImageFigure = modalImageWindow.querySelector('.popup__image')
+const modalImageCaption = modalImageWindow.querySelector('.popup__image-caption')
+
+
+// ==================  Profile  ==================
+
+const profileTitle = document.querySelector('.profile__title')
+const profileProf = document.querySelector('.profile__profession')
+
+// ==================  Card  ==================
+
+const cardsGrid = document.querySelector('.cards-grid') // DOM
+const itemCardTemplate = document.querySelector('.cards-grid-template').content.querySelector('.card') //template
+
+
+
 function createCard(titleValue, linkValue) {
     const itemCloneCard = itemCardTemplate.cloneNode(true); // cloneNode template
     itemCloneCard.querySelector('.card__title').textContent = titleValue;
@@ -24,59 +61,75 @@ function createCard(titleValue, linkValue) {
     return (itemCloneCard);
 }
 
-
 initialCards.forEach(item => {
-    cardsGrid.append(createCard(item.name, item.link));
+    cardsGrid.append(createCard(item.name, item.link))
 })
+
+
 
 // ==================  edit submit + event  ==================
 
-const modalEditForm = document.forms['editPopupForm'];
+const modalEditForm = document.forms['editPopupForm']
 const modalEditProfileSubmitHandler = e => {
-    e.preventDefault();
-    profileTitle.textContent = modalEditInputName.value; //value EditName => profileTitle
-    profileProf.textContent = modalEditInputProf.value; //value EditProf => profileProf
-    closeModal(modalEditWindow); //закрываем модалку
-    modalEditForm.reset(); //обнуляем модалку
+    e.preventDefault()
+    profileTitle.textContent = modalEditInputName.value //value EditName => profileTitle
+    profileProf.textContent = modalEditInputProf.value //value EditProf => profileProf
+    closeModal(modalEditWindow) //закрываем модалку
+    modalEditForm.reset() //обнуляем модалку
 }
 modalEditOpenBtn.addEventListener('click', () => {
-    modalEditInputName.value = profileTitle.textContent;
-    modalEditInputProf.value = profileProf.textContent;
-    openModal(modalEditWindow);
+    modalEditInputName.value = profileTitle.textContent
+    modalEditInputProf.value = profileProf.textContent
+    openModal(modalEditWindow)
 });
-modalEditCloseBtn.addEventListener('click', () => closeModal(modalEditWindow));
+modalEditCloseBtn.addEventListener('click', () => closeModal(modalEditWindow))
 modalEditForm.addEventListener('submit', modalEditProfileSubmitHandler);
 
 
 // ==================  add submit + event  ==================
 
-const modalAddForm = document.forms['addPopupForm'];
-modalAddCardOpenBtn.addEventListener('click', () => openModal(modalAddCardWindow));
-modalAddCardCloseBtn.addEventListener('click', () => closeModal(modalAddCardWindow));
+const modalAddForm = document.forms['addPopupForm']
+modalAddCardOpenBtn.addEventListener('click', () => openModal(modalAddCardWindow))
+modalAddCardCloseBtn.addEventListener('click', () => closeModal(modalAddCardWindow))
 const modalAddSubmitHandler = e => {
-    e.preventDefault();
-    const titleInputValue = modalAddCardInputTitle.value;
-    const linkInputValue = modalAddCardInputLink.value;
-    cardsGrid.prepend(createCard(titleInputValue, linkInputValue));
-    closeModal(modalAddCardWindow);
-    modalAddForm.reset();
+    e.preventDefault()
+    const titleInputValue = modalAddCardInputTitle.value
+    const linkInputValue = modalAddCardInputLink.value
+    cardsGrid.prepend(createCard(titleInputValue, linkInputValue))
+    closeModal(modalAddCardWindow)
+    modalAddForm.reset()
 }
-modalAddForm.addEventListener('submit', modalAddSubmitHandler);
+modalAddForm.addEventListener('submit', modalAddSubmitHandler)
 
 
 // ==================  add submit + event  ==================
-modalImageCloseBtn.addEventListener('click', () => closeModal(modalImageWindow));
+modalImageCloseBtn.addEventListener('click', () => closeModal(modalImageWindow))
 
 
 
 // ==================  Открываем текущий modal  ==================
 function openModal(popup) {
     //добавляем .popup_opened
-    popup.classList.add('popup_opened');
+    popup.classList.add('popup_opened')
 }
 
 // ==================  Закрываем текущий modal  ==================
 function closeModal(popup) {
     //удаляем .popup_opened
-    popup.classList.remove('popup_opened');
+    popup.classList.remove('popup_opened')
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,7 @@ const modalEditCloseBtn = modalEditWindow.querySelector('.popup__button-close');
 const modalEditInputName = modalEditWindow.querySelector('.popup__input_type_name');
 const modalEditInputProf = modalEditWindow.querySelector('.popup__input_type_prof');
 
+
 // ==================  Add Modal  ==================
 
 const modalAddCardWindow = document.querySelector('.popup-type-add-card');
@@ -26,7 +27,6 @@ const modalImageCaption = modalImageWindow.querySelector('.popup__image-caption'
 
 const profileTitle = document.querySelector('.profile__title');
 const profileProf = document.querySelector('.profile__profession');
-
 
 // ==================  Card  ==================
 
