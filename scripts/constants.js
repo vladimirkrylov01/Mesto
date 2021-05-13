@@ -6,6 +6,7 @@ const popupEditCloseBtn = popupEditWindow.querySelector('.popup__button-close')
 const popupEditInputName = popupEditWindow.querySelector('.popup__input_type_name')
 const popupEditInputProf = popupEditWindow.querySelector('.popup__input_type_prof')
 const popupEditCardOverlay = popupEditWindow.querySelector('.popup__overlay_edit')
+
 const popupEditForm = document.forms['editPopupForm']
 const popupEditProfileSubmitHandler = e => {
   e.preventDefault()
@@ -23,6 +24,7 @@ const popupAddCardInputTitle = popupAddCardWindow.querySelector('.popup__input_t
 const popupAddCardInputLink = popupAddCardWindow.querySelector('.popup__input_type_link')
 const popupAddCardCloseBtn = popupAddCardWindow.querySelector('.popup__button-close')
 const popupAddCardOverlay = popupAddCardWindow.querySelector('.popup__overlay_add')
+
 const popupAddForm = document.forms['addPopupForm']
 const popupAddSubmitHandler = e => {
   e.preventDefault()
@@ -39,7 +41,7 @@ const popupImageWindow = document.querySelector('.popup-type-image')
 const popupImageCloseBtn = popupImageWindow.querySelector('.popup__button-close')
 const popupImageFigure = popupImageWindow.querySelector('.popup__image')
 const popupImageCaption = popupImageWindow.querySelector('.popup__image-caption')
-
+const popupImageOverlay = document.querySelector('.popup__overlay_image')
 
 // ==================  Profile  ==================
 
@@ -53,5 +55,4 @@ const itemCardTemplate = document.querySelector('.cards-grid-template').content.
 
 // ==================  Card  ==================
 const mainContainer = document.querySelector('.main-container')
-const popupImageOverlay = document.querySelector('.popup__overlay_image')
 // const popupOverlay = document.querySelector('.popup__overlay')
