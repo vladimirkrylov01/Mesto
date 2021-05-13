@@ -2,7 +2,7 @@
 <h3 align="center">Яндекс Практикум</h3>
 
 🔴HTML5, 🔵CSS3, 🟡Javascript ES6.  
-Файловая структура по БЭМ.
+Файловая структура по BEM Nested.
 
 `HTML5`+ `CSS3`:
 * Flexbox
