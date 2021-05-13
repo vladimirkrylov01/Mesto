@@ -7,7 +7,7 @@ const popupEditInputName = popupEditWindow.querySelector('.popup__input_type_nam
 const popupEditInputProf = popupEditWindow.querySelector('.popup__input_type_prof')
 const popupEditCardOverlay = popupEditWindow.querySelector('.popup__overlay_edit')
 
-const popupEditForm = document.forms['editPopupForm']
+const popupEditForm = document.forms['editPopupForm'] // форма инпутов попап Edit
 const popupEditProfileSubmitHandler = e => {
   e.preventDefault()
   profileTitle.textContent = popupEditInputName.value //value EditName => profileTitle
@@ -25,7 +25,7 @@ const popupAddCardInputLink = popupAddCardWindow.querySelector('.popup__input_ty
 const popupAddCardCloseBtn = popupAddCardWindow.querySelector('.popup__button-close')
 const popupAddCardOverlay = popupAddCardWindow.querySelector('.popup__overlay_add')
 
-const popupAddForm = document.forms['addPopupForm']
+const popupAddForm = document.forms['addPopupForm'] // форма инпутов попап Add
 const popupAddSubmitHandler = e => {
   e.preventDefault()
   const titleInputValue = popupAddCardInputTitle.value
@@ -41,7 +41,7 @@ const popupImageWindow = document.querySelector('.popup-type-image')
 const popupImageCloseBtn = popupImageWindow.querySelector('.popup__button-close')
 const popupImageFigure = popupImageWindow.querySelector('.popup__image')
 const popupImageCaption = popupImageWindow.querySelector('.popup__image-caption')
-const popupImageOverlay = document.querySelector('.popup__overlay_image')
+const popupImageOverlay = popupImageWindow.querySelector('.popup__overlay_image')
 
 // ==================  Profile  ==================
 

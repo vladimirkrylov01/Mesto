@@ -29,7 +29,7 @@ function createCard(titleValue, linkValue) {
     return (itemCloneCard);
 }
 
-// проходим по массиу и каждый объект добавляем в начало(append) cardsGrid
+// проходим по массиу и значения каждого объекта добавляем в новую клон.катрочку, а её в начало(append) cardsGrid
 initialCards.forEach(item => {
     cardsGrid.append(createCard(item.name, item.link))
 })
