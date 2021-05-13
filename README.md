@@ -23,4 +23,4 @@
 
 
 ##
-Посмотреть как выглядит сайт можно по <a target="_blank" href="https://vladimirkrylov01.github.io/Mesto/">ссылке</a> 
+**Посмотреть как выглядит сайт можно по <a target="_blank" href="https://vladimirkrylov01.github.io/Mesto/">ссылке</a>**
