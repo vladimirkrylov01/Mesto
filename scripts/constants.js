@@ -5,6 +5,14 @@ const popupEditOpenBtn = document.querySelector('.profile__button-edit');
 const popupEditCloseBtn = popupEditWindow.querySelector('.popup__button-close');
 const popupEditInputName = popupEditWindow.querySelector('.popup__input_type_name');
 const popupEditInputProf = popupEditWindow.querySelector('.popup__input_type_prof');
+const popupEditForm = document.forms['editPopupForm']
+const popupEditProfileSubmitHandler = e => {
+  e.preventDefault()
+  profileTitle.textContent = popupEditInputName.value //value EditName => profileTitle
+  profileProf.textContent = popupEditInputProf.value //value EditProf => profileProf
+  closepopup(popupEditWindow) //закрываем модалку
+  popupEditForm.reset() //обнуляем модалку
+}
 
 // ==================  Add popup  ==================
 
@@ -13,6 +21,15 @@ const popupAddCardOpenBtn = document.querySelector('.profile__button-add');
 const popupAddCardInputTitle = popupAddCardWindow.querySelector('.popup__input_type_place');
 const popupAddCardInputLink = popupAddCardWindow.querySelector('.popup__input_type_link');
 const popupAddCardCloseBtn = popupAddCardWindow.querySelector('.popup__button-close');
+const popupAddForm = document.forms['addPopupForm']
+const popupAddSubmitHandler = e => {
+  e.preventDefault()
+  const titleInputValue = popupAddCardInputTitle.value
+  const linkInputValue = popupAddCardInputLink.value
+  cardsGrid.prepend(createCard(titleInputValue, linkInputValue))
+  closepopup(popupAddCardWindow)
+  popupAddForm.reset()
+}
 
 // ==================  Preview popup  ==================
 
@@ -31,3 +48,4 @@ const profileProf = document.querySelector('.profile__profession');
 
 const cardsGrid = document.querySelector('.cards-grid'); // DOM
 const itemCardTemplate = document.querySelector('.cards-grid-template').content.querySelector('.card'); //template
+
