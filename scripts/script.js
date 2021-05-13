@@ -1,38 +1,3 @@
-// ==================  Edit Modal  ==================
-
-const modalEditWindow = document.querySelector('.popup-type-edit')
-const modalEditOpenBtn = document.querySelector('.profile__button-edit')
-const modalEditCloseBtn = modalEditWindow.querySelector('.popup__button-close')
-const modalEditInputName = modalEditWindow.querySelector('.popup__input_type_name')
-const modalEditInputProf = modalEditWindow.querySelector('.popup__input_type_prof')
-
-
-// ==================  Add Modal  ==================
-
-const modalAddCardWindow = document.querySelector('.popup-type-add-card')
-const modalAddCardOpenBtn = document.querySelector('.profile__button-add')
-const modalAddCardInputTitle = modalAddCardWindow.querySelector('.popup__input_type_place')
-const modalAddCardInputLink = modalAddCardWindow.querySelector('.popup__input_type_link')
-const modalAddCardCloseBtn = modalAddCardWindow.querySelector('.popup__button-close')
-
-// ==================  Preview Modal  ==================
-
-const modalImageWindow = document.querySelector('.popup-type-image')
-const modalImageCloseBtn = modalImageWindow.querySelector('.popup__button-close')
-const modalImageFigure = modalImageWindow.querySelector('.popup__image')
-const modalImageCaption = modalImageWindow.querySelector('.popup__image-caption')
-
-
-// ==================  Profile  ==================
-
-const profileTitle = document.querySelector('.profile__title')
-const profileProf = document.querySelector('.profile__profession')
-
-// ==================  Card  ==================
-
-const cardsGrid = document.querySelector('.cards-grid') // DOM
-const itemCardTemplate = document.querySelector('.cards-grid-template').content.querySelector('.card') //template
-
 
 
 function createCard(titleValue, linkValue) {
@@ -53,10 +18,10 @@ function createCard(titleValue, linkValue) {
 
     const cardPreview = itemCloneCard.querySelector('.card__image');
     cardPreview.addEventListener('click',() => {
-        openModal(modalImageWindow);
-        modalImageFigure.src = linkValue;
-        modalImageFigure.alt = titleValue;
-        modalImageCaption.textContent = titleValue;
+        openpopup(popupImageWindow);
+        popupImageFigure.src = linkValue;
+        popupImageFigure.alt = titleValue;
+        popupImageCaption.textContent = titleValue;
     })
     return (itemCloneCard);
 }
@@ -69,52 +34,52 @@ initialCards.forEach(item => {
 
 // ==================  edit submit + event  ==================
 
-const modalEditForm = document.forms['editPopupForm']
-const modalEditProfileSubmitHandler = e => {
+const popupEditForm = document.forms['editPopupForm']
+const popupEditProfileSubmitHandler = e => {
     e.preventDefault()
-    profileTitle.textContent = modalEditInputName.value //value EditName => profileTitle
-    profileProf.textContent = modalEditInputProf.value //value EditProf => profileProf
-    closeModal(modalEditWindow) //закрываем модалку
-    modalEditForm.reset() //обнуляем модалку
+    profileTitle.textContent = popupEditInputName.value //value EditName => profileTitle
+    profileProf.textContent = popupEditInputProf.value //value EditProf => profileProf
+    closepopup(popupEditWindow) //закрываем модалку
+    popupEditForm.reset() //обнуляем модалку
 }
-modalEditOpenBtn.addEventListener('click', () => {
-    modalEditInputName.value = profileTitle.textContent
-    modalEditInputProf.value = profileProf.textContent
-    openModal(modalEditWindow)
+popupEditOpenBtn.addEventListener('click', () => {
+    popupEditInputName.value = profileTitle.textContent
+    popupEditInputProf.value = profileProf.textContent
+    openpopup(popupEditWindow)
 });
-modalEditCloseBtn.addEventListener('click', () => closeModal(modalEditWindow))
-modalEditForm.addEventListener('submit', modalEditProfileSubmitHandler);
+popupEditCloseBtn.addEventListener('click', () => closepopup(popupEditWindow))
+popupEditForm.addEventListener('submit', popupEditProfileSubmitHandler);
 
 
 // ==================  add submit + event  ==================
 
-const modalAddForm = document.forms['addPopupForm']
-modalAddCardOpenBtn.addEventListener('click', () => openModal(modalAddCardWindow))
-modalAddCardCloseBtn.addEventListener('click', () => closeModal(modalAddCardWindow))
-const modalAddSubmitHandler = e => {
+const popupAddForm = document.forms['addPopupForm']
+popupAddCardOpenBtn.addEventListener('click', () => openpopup(popupAddCardWindow))
+popupAddCardCloseBtn.addEventListener('click', () => closepopup(popupAddCardWindow))
+const popupAddSubmitHandler = e => {
     e.preventDefault()
-    const titleInputValue = modalAddCardInputTitle.value
-    const linkInputValue = modalAddCardInputLink.value
+    const titleInputValue = popupAddCardInputTitle.value
+    const linkInputValue = popupAddCardInputLink.value
     cardsGrid.prepend(createCard(titleInputValue, linkInputValue))
-    closeModal(modalAddCardWindow)
-    modalAddForm.reset()
+    closepopup(popupAddCardWindow)
+    popupAddForm.reset()
 }
-modalAddForm.addEventListener('submit', modalAddSubmitHandler)
+popupAddForm.addEventListener('submit', popupAddSubmitHandler)
 
 
 // ==================  add submit + event  ==================
-modalImageCloseBtn.addEventListener('click', () => closeModal(modalImageWindow))
+popupImageCloseBtn.addEventListener('click', () => closepopup(popupImageWindow))
 
 
 
-// ==================  Открываем текущий modal  ==================
-function openModal(popup) {
+// ==================  Открываем текущий popup  ==================
+function openpopup(popup) {
     //добавляем .popup_opened
     popup.classList.add('popup_opened')
 }
 
-// ==================  Закрываем текущий modal  ==================
-function closeModal(popup) {
+// ==================  Закрываем текущий popup  ==================
+function closepopup(popup) {
     //удаляем .popup_opened
     popup.classList.remove('popup_opened')
 }
