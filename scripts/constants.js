@@ -53,6 +53,6 @@ const profileProf = document.querySelector('.profile__profession')
 const cardsGrid = document.querySelector('.cards-grid') // DOM
 const itemCardTemplate = document.querySelector('.cards-grid-template').content.querySelector('.card') //template
 
-// ==================  Card  ==================
+// ==================  No-Scroll  ==================
+
 const mainContainer = document.querySelector('.main-container')
-// const popupOverlay = document.querySelector('.popup__overlay')
