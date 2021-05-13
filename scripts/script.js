@@ -1,6 +1,5 @@
 
 // ==================  создаём карточку из массива initialCards ==================
-
 function createCard(titleValue, linkValue) {
     const itemCloneCard = itemCardTemplate.cloneNode(true); // клонируем карточку из <template>
     itemCloneCard.querySelector('.card__title').textContent = titleValue; // заголовок
@@ -22,7 +21,7 @@ function createCard(titleValue, linkValue) {
     // при клике на фото - показываем popupImageWindow и наполняем
     const cardPreview = itemCloneCard.querySelector('.card__image');
     cardPreview.addEventListener('click',() => {
-        openpopup(popupImageWindow);
+        openPopup(popupImageWindow);
         popupImageFigure.src = linkValue;
         popupImageFigure.alt = titleValue;
         popupImageCaption.textContent = titleValue;
@@ -34,15 +33,16 @@ initialCards.forEach(item => {
     cardsGrid.append(createCard(item.name, item.link))
 })
 
-
 // ==================  Открываем текущий popup  ==================
-function openpopup(popup) {
+function openPopup(popup) {
     popup.classList.add('popup_opened')
+    mainContainer.classList.add('no-scroll')
 }
 
 // ==================  Закрываем текущий popup  ==================
-function closepopup(popup) {
+function closePopup(popup) {
     popup.classList.remove('popup_opened')
+    mainContainer.classList.remove('no-scroll')
 }
 
 
