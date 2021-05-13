@@ -1,21 +1,24 @@
 
 
 function createCard(titleValue, linkValue) {
-    const itemCloneCard = itemCardTemplate.cloneNode(true); // cloneNode template
-    itemCloneCard.querySelector('.card__title').textContent = titleValue;
-    itemCloneCard.querySelector('.card__image').src = linkValue;
-    itemCloneCard.querySelector('.card__title').alt = titleValue;
+    const itemCloneCard = itemCardTemplate.cloneNode(true); // клонируем карточку из <template>
+    itemCloneCard.querySelector('.card__title').textContent = titleValue; // заголовок
+    itemCloneCard.querySelector('.card__image').src = linkValue; // ссылка
+    itemCloneCard.querySelector('.card__title').alt = titleValue; // альт текст
 
+    // клик на ❤ - меняем на 🤍
     const cardLikeBtn = itemCloneCard.querySelector('.card__like');
     cardLikeBtn.addEventListener('click', () => {
         cardLikeBtn.classList.toggle('card__like_active');
     });
 
+    // клик на крестик - удаляем card
     const cardDeleteBtn = itemCloneCard.querySelector('.card__delete-button');
     cardDeleteBtn.addEventListener('click', () => {
         itemCloneCard.remove();
     })
 
+    // при клике на фото - показываем popupImageWindow и наполняем
     const cardPreview = itemCloneCard.querySelector('.card__image');
     cardPreview.addEventListener('click',() => {
         openpopup(popupImageWindow);
@@ -25,7 +28,7 @@ function createCard(titleValue, linkValue) {
     })
     return (itemCloneCard);
 }
-
+// проходим по массиу и каждый объект добавляем в начало(append) cardsGrid
 initialCards.forEach(item => {
     cardsGrid.append(createCard(item.name, item.link))
 })
@@ -69,8 +72,7 @@ popupAddForm.addEventListener('submit', popupAddSubmitHandler)
 
 // ==================  add submit + event  ==================
 popupImageCloseBtn.addEventListener('click', () => closepopup(popupImageWindow))
-
-
+popupImageWindow.addEventListener('click', () => closepopup(popupImageWindow))
 
 // ==================  Открываем текущий popup  ==================
 function openpopup(popup) {
