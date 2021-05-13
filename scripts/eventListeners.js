@@ -6,17 +6,17 @@ popupEditOpenBtn.addEventListener('click', () => { // клик по [edit] + п�
   openPopup(popupEditWindow)
 });
 popupEditCloseBtn.addEventListener('click', () => closePopup(popupEditWindow)) // клик по Х
-popupEditForm.addEventListener('submit', popupEditProfileSubmitHandler);
-popupEditWindow.addEventListener('click', () => closePopup(popupEditWindow)) // клик по overlay
+popupEditCardOverlay.addEventListener('click', () => closePopup(popupEditWindow)) // клик по overlay
+popupEditForm.addEventListener('submit', popupEditProfileSubmitHandler); // отправка формы
 
 // ==================  Add popup  ==================
 
 popupAddCardOpenBtn.addEventListener('click', () => openPopup(popupAddCardWindow)) // клик по [+]
 popupAddCardCloseBtn.addEventListener('click', () => closePopup(popupAddCardWindow)) // клик по Х
-popupAddCardWindow.addEventListener('click', () => closePopup(popupAddCardWindow)) // клик по overlay
-popupAddForm.addEventListener('submit', popupAddSubmitHandler)
+popupAddCardOverlay.addEventListener('click', () => closePopup(popupAddCardWindow)) // клик по overlay
+popupAddForm.addEventListener('submit', popupAddSubmitHandler) // отправка формы
 
 // ==================  Preview popup  ==================
 
 popupImageCloseBtn.addEventListener('click', () => closePopup(popupImageWindow)) // клик по Х
-popupImageWindow.addEventListener('click', () => closePopup(popupImageWindow)) // клик по overlay
+popupImageOverlay.addEventListener('click', () => closePopup(popupImageWindow)) // клик по overlay
