@@ -10,13 +10,12 @@ function createCard(titleValue, linkValue) {
   // cardLikeBtn.addEventListener('click', () => {
   //     cardLikeBtn.classList.toggle('card__like_active');
   // });
-
-
+  
   // клик на X - удаляем card
-  // const cardDeleteBtn = itemCloneCard.querySelector('.card__delete-button');
-  // cardDeleteBtn.addEventListener('click', () => {
-  //   itemCloneCard.remove();
-  // })
+  const cardDeleteBtn = itemCloneCard.querySelector('.card__delete-button');
+  cardDeleteBtn.addEventListener('click', () => {
+    itemCloneCard.remove();
+  })
 
   // при клике на фото - показываем popupImageWindow и наполняем
   const cardPreview = itemCloneCard.querySelector('.card__image');
