@@ -49,7 +49,6 @@ const profileTitle = document.querySelector('.profile__title')
 const profileProf = document.querySelector('.profile__profession')
 
 // ==================  Card  ==================
-
 const cardsGrid = document.querySelector('.cards-grid') // DOM
 const itemCardTemplate = document.querySelector('.cards-grid-template').content.querySelector('.card') //template
 

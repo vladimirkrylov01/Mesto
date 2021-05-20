@@ -5,12 +5,6 @@ function createCard(titleValue, linkValue) {
   itemCloneCard.querySelector('.card__image').src = linkValue; // / src clone card = initialCards > item.link
   itemCloneCard.querySelector('.card__title').alt = titleValue; // alt clone card = initialCards > item.name
 
-  // клик на ❤ - меняем на 🤍
-  // const cardLikeBtn = itemCloneCard.querySelector('.card__like');
-  // cardLikeBtn.addEventListener('click', () => {
-  //     cardLikeBtn.classList.toggle('card__like_active');
-  // });
-  
   // клик на X - удаляем card
   const cardDeleteBtn = itemCloneCard.querySelector('.card__delete-button');
   cardDeleteBtn.addEventListener('click', () => {
