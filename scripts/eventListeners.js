@@ -20,3 +20,11 @@ popupAddForm.addEventListener('submit', popupAddSubmitHandler) // отправк
 
 popupImageCloseBtn.addEventListener('click', () => closePopup(popupImageWindow)) // клик по Х
 popupImageOverlay.addEventListener('click', () => closePopup(popupImageWindow)) // клик по overlay
+
+// ==================  Card  ==================
+// делегирование клика на ❤
+cardsGrid.addEventListener('click',(evt) => {
+  if (evt.target.classList.contains('card__like')) {
+    evt.target.classList.toggle('card__like_active')
+  }
+})
