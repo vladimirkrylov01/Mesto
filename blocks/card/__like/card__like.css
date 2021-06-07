@@ -5,14 +5,16 @@
     cursor: pointer;
     margin-right: 19px;
     background: url('../../../images/like/like-disabled.svg') center no-repeat;
-    transition: opacity .25s ease;
     padding-left: 20px;
     -webkit-tap-highlight-color: transparent;
+    transition: opacity .3s ease-in-out,transform .3s ease-in-out;
 }
 .card__like:focus{
     outline: none;
     border: none;
 }
 .card__like:hover{
-    opacity: 50%;
+    opacity: .5;
+    transform: scale(1.2);
+    cursor: pointer;
 }

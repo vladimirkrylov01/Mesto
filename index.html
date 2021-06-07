@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="История путешествий"/>
     <meta name="author" content="Владимир Крылов"/>
-<!--    <meta name="robots" content="index,follow"/>-->
-<!--    <meta name="keywords" content="keyword 1, keyword 2, keyword 3…" />-->
+    <!--    <meta name="robots" content="index,follow"/>-->
+    <!--    <meta name="keywords" content="keyword 1, keyword 2, keyword 3…" />-->
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место. Страница путешественника</title>
 </head>
@@ -15,19 +15,23 @@
     <div class="page">
         <header class="header"> <!-- шапка сайта -->
             <a target="_self" href="#">
-                <img class="header__logo" src="./images/header/header__logo.svg" alt="Логотип Mesto">
+                <img class="header__logo" src="./images/header/header__logo.svg"
+                     alt="Логотип Mesto">
             </a>
         </header>
         <main class="content">
             <section class="profile">
                 <div class="profile__content">
-                    <img class="profile__avatar" src="./images/profile/profileImage.jpg" alt="Жак-Ив Кусто">
+                    <img class="profile__avatar"
+                         src="./images/profile/profileImage.jpg"
+                         alt="Жак-Ив Кусто">
                     <div class="profile__info">
                         <div class="profile__edit">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
                             <p class="profile__profession">Исследователь океана</p>
                         </div>
-                        <button class="profile__button-edit" type="button"></button>
+                        <button class="profile__button-edit"
+                                type="button"></button>
                     </div>
                 </div>
                 <button class="profile__button-add" type="button"></button>
@@ -36,10 +40,13 @@
                 <template class="cards-grid-template">
                     <article class="card">
                         <button class="card__delete-button"></button>
-                        <img class="card__image" src="./images/photo-1618048558171-8c9edde77055.jfif" alt="">
+                        <img class="card__image"
+                             src="./images/photo-1618048558171-8c9edde77055.jfif"
+                             alt="">
                         <div class="card__content">
                             <h2 class="card__title"></h2>
-                            <button class="card__like" type="button" aria-label="Оценить"></button>
+                            <button class="card__like" type="button"
+                                    aria-label="Оценить"></button>
                         </div>
                     </article>
                 </template>
@@ -54,14 +61,28 @@
 <section class="popup popup-type-edit">
     <div class="popup__overlay popup__overlay_edit"></div>
     <div class="popup__container">
-        <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
+        <button class="popup__button-close" type="button"
+                aria-label="Закрыть"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="editPopupForm">
-            <label><input class="popup__input popup__input_type_name" type="text" required value="" name="name"
-                       placeholder="Имя"></label>
-            <label><input class="popup__input popup__input_type_prof" type="text" required value="" name="profession"
-                       placeholder="Профессия"></label>
-            <button class="popup__button-submit" type="submit">Сохранить</button>
+        <form class="form" name="editPopupForm" novalidate>
+            <fieldset class="form__set">
+                <label class="form__field" for="name-input">
+                    <input required autofocus tabindex="1" id="name-input" class="form__input form__input_type_name"
+                           minlength="2" maxlength="40" type="text"  value="" pattern="^[a-zA-Z]+$"
+                           name="name" placeholder="Имя">
+                    <span class="name-input-error form__input-error"></span>
+                </label>
+                <label class="form__field" for="prof-input">
+                    <input required tabindex="2" id="prof-input" class="form__input form__input_type_prof"
+                           minlength="2" maxlength="200" type="text" value="" pattern="^[a-zA-Z]+$"
+                           name="profession" placeholder="Профессия">
+                    <span class="prof-input-error form__input-error">Необходимо заполнить поле</span>
+                </label>
+                <button tabindex="3"
+                        class="form__submit popup__button-submit popup__button-edit"
+                        type="submit">Сохранить
+                </button>
+            </fieldset>
         </form>
     </div>
 </section>
@@ -69,14 +90,30 @@
 <section class="popup popup-type-add-card">
     <div class="popup__overlay popup__overlay_add"></div>
     <div class="popup__container">
-        <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
+        <button class="popup__button-close" type="button"
+                aria-label="Закрыть"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" name="addPopupForm">
-            <label><input class="popup__input popup__input_type_place" type="text" required value="" name="place"
-                       placeholder="Название"></label>
-            <label><input class="popup__input popup__input_type_link" type="text" required value="" name="link"
-                       placeholder="Ссылка на картинку"></label>
-            <button class="popup__button-submit" type="submit">Создать</button>
+        <form class="form" name="addPopupForm" novalidate>
+            <fieldset class="form__set">
+            <label class="form__field" for="place-input">
+                <input id="place-input" name="place" required autofocus
+                       class="form__input form__input_type_place"
+                       type="text" value="" pattern="^[a-zA-Z]+$"
+                       minlength="2" maxlength="30"
+                        placeholder="Название">
+                <span class="place-input-error form__input-error">Необходимо заполнить поле</span>
+            </label>
+            <label class="form__field" for="link-input">
+                <input id="link-input" required
+                       class="form__input form__input_type_link"
+                       type="url" value="" name="link"
+                       placeholder="Ссылка на картинку">
+                <span class="link-input-error form__input-error">Необходимо заполнить поле</span>
+            </label>
+            <button class="form__submit popup__submit popup__button-submit popup__button-add popup__button-submit_disabled" disabled
+                    type="submit">Создать
+            </button>
+            </fieldset>
         </form>
     </div>
 </section>
@@ -84,17 +121,21 @@
 <section class="popup popup-type-image">
     <div class="popup__overlay popup__overlay_image"></div>
     <div class="popup__preview">
-        <button class="popup__button-close popup-type-image__button-close" type="button" aria-label="Закрыть"></button>
+        <button class="popup__button-close popup-type-image__button-close"
+                type="button" aria-label="Закрыть"></button>
         <figure class="popup__figure">
-            <img class="popup__image" src="./images/photo-1618048558171-8c9edde77055.jfif" alt="Название - ">
+            <img class="popup__image"
+                 src="./images/photo-1618048558171-8c9edde77055.jfif"
+                 alt="Название - ">
             <figcaption class="popup__image-caption"></figcaption>
         </figure>
     </div>
 </section>
 
 <script src="scripts/constants.js"></script>
-<script src="scripts/initial-cards.js"></script>
 <script src="scripts/eventListeners.js"></script>
+<script src="scripts/initial-cards.js"></script>
+<script src="scripts/validate.js"></script>
 <script src="scripts/script.js"></script>
 
 </body>

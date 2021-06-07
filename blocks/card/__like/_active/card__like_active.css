@@ -1,7 +1,10 @@
 .card__like_active{
     background: url('../../../../images/like/like-active.svg') center no-repeat;
     opacity: 1;
-    transition: background 0s;
+    transition: opacity .3s ease-in-out,transform .3s ease-in-out;
+}
+.card__like_active:hover{
+    transform: scale(1.2);
 }
 .card__like_active:hover:active{
     opacity: 1;
