@@ -44,3 +44,9 @@ const itemCardTemplate = document.querySelector('.cards-grid-template').content.
 // ==================  No-Scroll  ==================
 const mainContainer = document.querySelector('.main-container')
 
+// ==================  Form  ==================
+const formElement = document.querySelector('.form'); // class="form"
+const form = document.querySelector('.form')
+
+
+
