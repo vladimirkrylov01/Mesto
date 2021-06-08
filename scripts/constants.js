@@ -44,3 +44,18 @@ const form = document.querySelector('.form')
 // ==================  Validate  ==================
 const popup = document.querySelector('.popup')
 
+
+// Настройки
+const vConfig = {
+  formSelector: 'form', // class="form"
+  inputSelector: '.form__input', //  class="form__input"
+  submitButtonSelector: '.form__submit', // class="form__submit"
+  inactiveButtonClass: 'popup__button-submit_disabled', // disabled button
+  inputErrorClass: 'form__input_type_error', // border-bottom-color: red
+  errorClass: 'form__input-error_active', // opacity 1 - показываем сообщение ошибки)
+  openClass: 'popup_opened'
+}
+// ищем кнопку в addForm popup
+const button = popupAddCardWindow.querySelector(vConfig.submitButtonSelector)
+// ищем все инпуты в массиве инпутов в addForm popup и кладём в inputs
+const inputs = Array.from(popupAddCardWindow.querySelector(vConfig.inputSelector))

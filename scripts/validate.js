@@ -1,16 +1,7 @@
 
 // ==================================================================================================================
 
-// Настройки
-const vConfig = {
-  formSelector: 'form', // class="form"
-  inputSelector: '.form__input', //  class="form__input"
-  submitButtonSelector: '.form__submit', // class="form__submit"
-  inactiveButtonClass: 'popup__button-submit_disabled', // disabled button
-  inputErrorClass: 'form__input_type_error', // border-bottom-color: red
-  errorClass: 'form__input-error_active', // opacity 1 - показываем сообщение ошибки)
-  openClass: 'popup_opened'
-}
+
 
 // ==================  Input  ==================
 // валидация инпутов : show/hide __red,
@@ -29,19 +20,18 @@ function validateInput1(formElement, input, settings) { // принимаем ф
     return false
   }
 }
-// ==================  Input  ==================
 
 // когда открываешь edit popup - кнопка неактивна , т.к. какой смысл разрешать сохранять данные если имя и профессия одинаковые.
 // при изменении - она становится активной.
 // так вот - надо ли это менять?
-// если да, то я даже хз как))) 
+// если да, то я даже хз как)))
 
 // ==================  Button  ==================
 function toggleButtonState1(button,inputs,settings) {
   if (hasInvalidInputs(inputs)) { // если все инпуты не валидны, то
-    showInputError1(button,settings) // сделай кнопку неактивной
+    setButtonDisabled(button,settings) // сделай кнопку неактивной
   } else {  // если все инпуты валидны
-    hideInputError1(button,settings) // сделай кнопку активной
+    setButtonEnabled(button,settings) // сделай кнопку активной
   }
 }
 
@@ -53,16 +43,15 @@ function hasInvalidInputs(inputs) {
   })
 }
 
-function showInputError1(button,settings){ // принимаем кнопку и настройки
+function setButtonDisabled(button,settings){ // принимаем кнопку и настройки
   button.disabled = true // сделать кнопку неактивной
   button.classList.add(settings.inactiveButtonClass)
 }
 
-function hideInputError1(button,settings){ // принимаем кнопку и настройки
+function setButtonEnabled(button,settings){ // принимаем кнопку и настройки
   button.disabled = false // сделать кнопку активной
   button.classList.remove(settings.inactiveButtonClass)
 }
-// ==================  Button  ==================
 
 
 // ==================  addEventListener  ==================
@@ -79,11 +68,9 @@ function setInputListeners1(formElement, settings) { // принимаем фо�
     })
   })
 }
-// ==================  addEventListener  ==================
 
 
 // ==================  enableValidation  ==================
-// для всех форм отменяем e.preventDefault()
 function enableValidation1(settings) {
   const forms = Array.from(document.querySelectorAll(settings.formSelector)) // находим все формы
 
@@ -94,18 +81,34 @@ function enableValidation1(settings) {
 }
 
 enableValidation1(vConfig)
-// ==================  enableValidation  ==================
 
 
 // ==================  preventDefault  ==================
-// отмена отправки формы
 function preventFormSubmit1(e) {
   e.preventDefault()
 }
-// ==================  preventDefault  ==================
 
+function hideErrorSpan(errorElement,settings){
+  errorElement.textContent = '' // удаляем содержимое ошибки
+  errorElement.classList.remove(settings.errorClass) // делаем ошибку невидимой (opacity:0)
+}
+function showErrorSpan(errorElement,input,settings){
+  errorElement.textContent = input.validationMessage
+  errorElement.classList.add(settings.errorClass) // делаем ошибку видимой (opacity:1)
+}
 
+// ==================  Очищаем ошибки  ==================
+function clearInputError(popup) {
+  // show/hide span error
+  const inputs = Array.from(popup.querySelectorAll(vConfig.inputSelector)) // массив инпутов
 
+  // в массиве инпутов берем каждый инпут
+  inputs.forEach(input => {
+    input.classList.remove(vConfig.inputErrorClass) // у каждого инпута убираем ___red
+    const error = document.querySelector((`.${input.id}-error`)) // выбираем error
+    hideErrorSpan(error,vConfig) // убираем span error
+  })
+}
 
 
 

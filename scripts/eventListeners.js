@@ -7,6 +7,7 @@ popupEditOpenBtn.addEventListener('click', () => {
 });
 popupAddCardOpenBtn.addEventListener('click', () => {
   openPopup(popupAddCardWindow)
+  resetAddForm(popupAddCardWindow) // если addForm, то стираем значения
 })
 
 // ==================  Закрытие на X  ==================
@@ -38,17 +39,6 @@ popupEditForm.addEventListener('submit', e => {
   // setEventListeners(popupEditForm)
 })
 
-
-// ==================  Preview popup  ==================
-
-
-// ==================  Card  ==================
-// делегирование клика на ❤
-cardsGrid.addEventListener('click',(evt) => {
-  if (evt.target.classList.contains('card__like')) {
-    evt.target.classList.toggle('card__like_active')
-  }
-})
 
 // ==================  Закрытие по Overlay  ==================
 
