@@ -3,11 +3,13 @@
 popupEditOpenBtn.addEventListener('click', () => {
   popupEditInputName.value = profileTitle.textContent // передаём значения из profile в инпуты попапа
   popupEditInputProf.value = profileProf.textContent
+  clearInputError(popupEditWindow) // очищаем ошибки в инпутах
   openPopup(popupEditWindow) // открываем попап
 });
 popupAddCardOpenBtn.addEventListener('click', () => {
-  openPopup(popupAddCardWindow)
-  resetAddForm(popupAddCardWindow) // если addForm, то стираем значения
+  clearInputError(popupAddCardWindow) // очищаем ошибки в инпутах
+  openPopup(popupAddCardWindow) // открываем попап
+  resetAddForm(popupAddCardWindow) // очищаем инпуты
 })
 
 // ==================  Закрытие на X  ==================
@@ -15,7 +17,6 @@ popupAddCardOpenBtn.addEventListener('click', () => {
 popupEditCloseBtn.addEventListener('click', () => closePopup(popupEditWindow))
 popupAddCardCloseBtn.addEventListener('click', () => {
   closePopup(popupAddCardWindow)
-  resetAddForm(popup)
 })
 popupImageCloseBtn.addEventListener('click', () => closePopup(popupImageWindow))
 
@@ -26,7 +27,6 @@ popupAddForm.addEventListener('submit', () => { // при submit
   const linkInputValue = popupAddCardInputLink.value
   cardsGrid.prepend(createCard(titleInputValue, linkInputValue))
   closePopup(popupAddCardWindow)
-  resetAddForm(popup)
 })
 
 

@@ -7,7 +7,6 @@
 // валидация инпутов : show/hide __red,
 function validateInput1(formElement, input, settings) { // принимаем форму, инпут и настройки
   const errorElement = formElement.querySelector(`.${input.id}-error`) // по классу от id инпута
-  console.log('formElement - ',formElement)
   if (input.validity.valid) {
     // если ВАЛИДНО
     input.classList.remove(settings.inputErrorClass) // убираем border-bottom-color: red

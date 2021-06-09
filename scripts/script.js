@@ -4,17 +4,20 @@ function createCard(titleValue, linkValue) {
   itemCloneCard.querySelector('.card__title').textContent = titleValue; // заголовок clone card = initialCards > item.name
   itemCloneCard.querySelector('.card__image').src = linkValue; // / src clone card = initialCards > item.link
   itemCloneCard.querySelector('.card__title').alt = titleValue; // alt clone card = initialCards > item.name
+
   // клик на X - удаляем clone card
   const cardDeleteBtn = itemCloneCard.querySelector('.card__delete-button');
   cardDeleteBtn.addEventListener('click', () => {
     itemCloneCard.remove();
   })
-  // делегирование клика на ❤
-  cardsGrid.addEventListener('click',(evt) => {
+
+  // toggle like button ❤
+  itemCloneCard.addEventListener('click',(evt) => {
     if (evt.target.classList.contains('card__like')) {
       evt.target.classList.toggle('card__like_active')
     }
   })
+
   // при клике на фото - показываем popupImageWindow и наполняем
   const cardPreview = itemCloneCard.querySelector('.card__image');
   cardPreview.addEventListener('click', () => {
@@ -53,6 +56,11 @@ const handleClosePopup = e => {
 const enableEscListener = () => {
   document.addEventListener('keyup', handleClosePopup)
 }
+
+const disableEscListener = () => {
+  document.removeEventListener('keyup',handleClosePopup)
+}
+
 // ==================  Открываем текущий popup  ==================
 function openPopup(popup) {
   popup.classList.add(vConfig.openClass) // показываем
@@ -65,7 +73,8 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove(vConfig.openClass)
   mainContainer.classList.remove('no-scroll')
-  clearInputError(popup)
+  // clearInputError(popup)
+  disableEscListener()
 }
 
 // ==================  Закрытие по Overlay  ==================
