@@ -12,7 +12,8 @@ function createCard(titleValue, linkValue) {
   })
 
   // toggle like button ❤
-  itemCloneCard.addEventListener('click',(evt) => {
+  const cardLikeButton = itemCloneCard.querySelector('.card__like')
+  cardLikeButton.addEventListener('click',(evt) => {
     if (evt.target.classList.contains('card__like')) {
       evt.target.classList.toggle('card__like_active')
     }
