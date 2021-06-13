@@ -24,7 +24,6 @@ const popupAddCardWindow = document.querySelector('.popup-type-add-card'), // ad
 const popupImage = document.querySelector('.popup-type-image')
 const popupImageWindow = document.querySelector('.popup-type-image'), // preview popup window
       popupImageCloseBtn = popupImageWindow.querySelector('.popup__button-close'), // btn X
-      popupImageFigure = popupImageWindow.querySelector('.popup__image'), // picture
       popupImageCaption = popupImageWindow.querySelector('.popup__image-caption') // caption
 
 // ==================  Profile  ==================

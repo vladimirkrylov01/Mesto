@@ -1,50 +1,41 @@
 // ==================  создаём карточку из массива initialCards ==================
-function createCard(titleValue, linkValue) {
-  const itemCloneCard = itemCardTemplate.cloneNode(true); // клонируем карточку из <template>
-  itemCloneCard.querySelector('.card__title').textContent = titleValue; // заголовок clone card = initialCards > item.name
-  itemCloneCard.querySelector('.card__image').src = linkValue; // / src clone card = initialCards > item.link
-  itemCloneCard.querySelector('.card__title').alt = titleValue; // alt clone card = initialCards > item.name
+function createCard(cardName, cardLink) {
+
+  const newCloneCard = itemCardTemplate.cloneNode(true) // клонируем карточку из <template>
+  newCloneCard.querySelector('.card__title').textContent = cardName // заголовок clone card = initialCards > item.name
+  newCloneCard.querySelector('.card__image').src = cardLink // / src clone card = initialCards > item.link
+  newCloneCard.querySelector('.card__title').alt = cardName // alt clone card = initialCards > item.name
 
   // клик на X - удаляем clone card
-  const cardDeleteBtn = itemCloneCard.querySelector('.card__delete-button');
+  const cardDeleteBtn = newCloneCard.querySelector('.card__delete-button')
   cardDeleteBtn.addEventListener('click', () => {
-    itemCloneCard.remove();
+    newCloneCard.remove()
   })
 
   // toggle like button ❤
-  const cardLikeButton = itemCloneCard.querySelector('.card__like')
-  cardLikeButton.addEventListener('click',(evt) => {
-    if (evt.target.classList.contains('card__like')) {
-      evt.target.classList.toggle('card__like_active')
-    }
-  })
+  const cardLikeButton = newCloneCard.querySelector('.card__like')
+  cardLikeButton.addEventListener('click',() => toggleLike(cardLikeButton))
 
-  // при клике на фото - показываем popupImageWindow и наполняем
-  const cardPreview = itemCloneCard.querySelector('.card__image');
+  // при клике на фото - показываем preview
+  const cardPreview = newCloneCard.querySelector('.card__image')
   cardPreview.addEventListener('click', () => {
-    openPopup(popupImageWindow);
-    popupImageFigure.src = linkValue;
-    popupImageFigure.alt = titleValue;
-    popupImageCaption.textContent = titleValue;
+    openPopup(popupImageWindow)
+    const popupImageFigure = popupImageWindow.querySelector('.popup__image') // picture
+    popupImageFigure.src = cardLink
+    popupImageFigure.alt = cardName
+    popupImageCaption.textContent = cardName
   })
-  return (itemCloneCard);
+  return newCloneCard //возвращает наполненную карточку
 }
 
-
+// toggle like button ❤
+function toggleLike(e){
+  e.classList.toggle('card__like_active')
+}
 // проходим по массиву и значения каждого объекта добавляем в новую клон.катрочку, а её в начало(append) cardsGrid
-initialCards.forEach(item => {
-  cardsGrid.append(createCard(item.name, item.link))
+initialCards.forEach(itemData => {
+  cardsGrid.append(createCard(itemData.name, itemData.link))
 })
-
-
-// ==================  Обработчик ESC  ==================
-// function ESCHadler() {
-//   document.addEventListener('keydown', evt => {  // закрываем по ESC
-//     if (evt.key === 'Escape') {
-//       closePopup(activePopup)
-//     }
-//   })
-// }
 
 // при ESC закрываем активный popup
 const handleClosePopup = e => {
@@ -53,6 +44,7 @@ const handleClosePopup = e => {
     closePopup(activePopup)
   }
 }
+
 // вешаем на документ слушатель на клавишу ESC
 const enableEscListener = () => {
   document.addEventListener('keyup', handleClosePopup)
@@ -93,11 +85,5 @@ function resetAddForm(popup) {
     toggleButtonState1(button,inputs,vConfig)
     setButtonDisabled(button,vConfig)
   }
-  // const button = popupAddCardWindow.querySelector(vConfig.submitButtonSelector) // ищем кнопку
-  // const inputs = Array.from(popupAddCardWindow.querySelector(vConfig.inputSelector)) // ищем все инпуты в массиве инпутов у addpopup и кладём в button
-
-  // toggleButtonState1(button,inputs,vConfig)
 }
-// toggleButtonState1(button,inputs,vConfig) // вызываем ф-ию состояния кнопки
-
 
