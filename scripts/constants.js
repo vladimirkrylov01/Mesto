@@ -23,8 +23,8 @@ const popupAddCardWindow = document.querySelector('.popup-type-add-card'), // ad
 
 const popupImage = document.querySelector('.popup-type-image')
 const popupImageWindow = document.querySelector('.popup-type-image'), // preview popup window
-      popupImageCloseBtn = popupImageWindow.querySelector('.popup__button-close'), // btn X
-      popupImageCaption = popupImageWindow.querySelector('.popup__image-caption') // caption
+      popupImageCloseBtn = popupImageWindow.querySelector('.popup__button-close') // btn X
+// const popupImageCaption = popupImageWindow.querySelector('.popup__image-caption') // caption
 
 // ==================  Profile  ==================
 const profileTitle = document.querySelector('.profile__title')
@@ -38,7 +38,6 @@ const itemCardTemplate = document.querySelector('.cards-grid-template').content.
 const mainContainer = document.querySelector('.main-container')
 
 // ==================  Form  ==================
-const form = document.querySelector('.form')
 
 // ==================  Validate  ==================
 const popup = document.querySelector('.popup')
@@ -52,9 +51,11 @@ const vConfig = {
   inactiveButtonClass: 'popup__button-submit_disabled', // disabled button
   inputErrorClass: 'form__input_type_error', // border-bottom-color: red
   errorClass: 'form__input-error_active', // opacity 1 - показываем сообщение ошибки)
-  openClass: 'popup_opened'
+  openClass: 'popup_opened',
 }
-// ищем кнопку в addForm popup
+
+
+// Add form button
 const button = popupAddCardWindow.querySelector(vConfig.submitButtonSelector)
 // ищем все инпуты в массиве инпутов в addForm popup и кладём в inputs
-const inputs = Array.from(popupAddCardWindow.querySelector(vConfig.inputSelector))
+

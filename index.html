@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="История путешествий"/>
     <meta name="author" content="Владимир Крылов"/>
-    <!--    <meta name="robots" content="index,follow"/>-->
-    <!--    <meta name="keywords" content="keyword 1, keyword 2, keyword 3…" />-->
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место. Страница путешественника</title>
 </head>
@@ -57,7 +55,6 @@
         </footer>
     </div>
 </div>
-
 <section class="popup popup-type-edit">
     <div class="popup__container">
         <button class="popup__button-close" type="button"
@@ -85,7 +82,6 @@
         </form>
     </div>
 </section>
-
 <section class="popup popup-type-add-card">
     <div class="popup__container">
         <button class="popup__button-close" type="button"
@@ -115,7 +111,6 @@
         </form>
     </div>
 </section>
-
 <section class="popup popup-type-image">
     <div class="popup__preview">
         <button class="popup__button-close popup-type-image__button-close"
@@ -129,11 +124,17 @@
     </div>
 </section>
 
+
 <script src="scripts/constants.js"></script>
-<script src="scripts/eventListeners.js"></script>
 <script src="scripts/initial-cards.js"></script>
-<script src="scripts/validate.js"></script>
-<script src="scripts/script.js"></script>
+<script src="scripts/card.js"></script>
+<script src="scripts/formValidator.js"></script>
+
+<!--<script src="scripts/validate.js"></script>-->
+<script src="scripts/eventListeners.js"></script> <!--здесь import {Card} from "./card";-->
+
+<script src="scripts/script.js"></script> <!--здесь 2 импорта Card и FormValidator-->
+
 
 </body>
 </html>
