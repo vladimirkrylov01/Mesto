@@ -1,3 +1,4 @@
+import {vConfig} from "./constants.js";
 export class FormValidator{
   constructor() {
     this.vConfig = vConfig
@@ -83,7 +84,3 @@ export class FormValidator{
   }
 
 }
-
-// const validation = new FormValidator()
-// validation.enableValidation()
-// validation.clearInputError(popupEditWindow)
