@@ -1,3 +1,6 @@
+import {Card} from "./modules/card.js";
+import {FormValidator} from "./modules/formValidator.js";
+
 // function createCard(cardName, cardLink) {
 //   const newCloneCard = itemCardTemplate.cloneNode(true) // клонируем карточку из <template>
 //   const title = newCloneCard.querySelector('.card__title')
@@ -125,15 +128,21 @@
 // import {FormValidator} from "./formValidator";
 // const formValidation = new FormValidator()
 // formValidation.enableValidation()
-// import {Card} from "./card";
+// import {Card} from "./modules/card";
 // Добавляем карточки из массива
-
 initialCards.forEach(item => {
   const card = new Card(item) // Создаём экземпляр карточки
   const cardElement = card.getElement() // Создаём карточку и возвращаем наружу
   cardsGrid.append(cardElement) // Добавляем в DOM
 })
 
+const enableEscListener = () => {
+  document.addEventListener('keyup', handleClosePopup)
+}
+
+const disableEscListener = () => {
+  document.removeEventListener('keyup',handleClosePopup)
+}
 
 // const popupElement = document.querySelector('.popup');
 // const popupImage = document.querySelector('.popup__image');
@@ -157,14 +166,7 @@ const handleClosePopup = e => {
   }
 }
 
-// вешаем на документ слушатель на клавишу ESC
-const enableEscListener = () => {
-  document.addEventListener('keyup', handleClosePopup)
-}
 
-const disableEscListener = () => {
-  document.removeEventListener('keyup',handleClosePopup)
-}
 
 // ==================  Открываем текущий popup  ==================
 function openPopup(popup) {
@@ -178,14 +180,7 @@ function closePopup(popup) {
   popup.classList.remove(vConfig.openClass)
   mainContainer.classList.remove('no-scroll')
   // clearInputError(popup)
-  disableEscListener()
-}
-
-// ==================  Закрытие по Overlay  ==================
-function clickOnOverlay(e) {
-    if(e.target === e.currentTarget){
-      closePopup(e.target)
-    }
+  disableEscListener() // снимаем слушатель ESC
 }
 
 // ==================  Обнуляем add popup form  ==================
@@ -195,3 +190,73 @@ function clickOnOverlay(e) {
 //   }
 // }
 
+
+
+popupEditOpenBtn.addEventListener('click', () => {
+  openPopup(popupEditWindow) // открываем попап
+  popupEditInputName.value = profileTitle.textContent // передаём значения из profile в инпуты попапа
+  popupEditInputProf.value = profileProf.textContent
+  // clearInputError(popupEditWindow) // очищаем ошибки в инпутах
+  const formValidate = new FormValidator()
+  formValidate.enableValidation()
+  formValidate.clearInputError(popupEditWindow)
+});
+
+popupAddCardOpenBtn.addEventListener('click', () => {
+  openPopup(popupAddCardWindow) // открываем попап
+  const formValidate = new FormValidator()
+  formValidate.enableValidation(popupAddCardWindow)
+  button.classList.add(vConfig.inactiveButtonClass) // окрашиваем в disabled
+  button.setAttribute('disabled',true) // делаем неактивной
+  formValidate.clearInputError(popupAddCardWindow) // очищаем ошибки
+  // clearInputError(popupAddCardWindow) // очищаем ошибки в инпутах
+  // resetAddForm(popupAddCardWindow) // очищаем инпуты
+  popupAddForm.reset() // очищаем инпуты у формы
+})
+
+// ==================  Закрытие на X  ==================
+popupEditCloseBtn.addEventListener('click', () => closePopup(popupEditWindow))
+popupAddCardCloseBtn.addEventListener('click', () => {
+  closePopup(popupAddCardWindow)
+})
+popupImageCloseBtn.addEventListener('click', () => closePopup(popupImageWindow))
+
+// ==================  Submit  ==================
+popupAddForm.addEventListener('submit', () => { // при submit
+                                                // старый код
+                                                // const titleInputValue = popupAddCardInputPlace.value
+                                                // const linkInputValue = popupAddCardInputLink.value
+                                                // cardsGrid.prepend(titleInputValue,linkInputValue)
+  const newCard ={
+    name: popupAddCardInputPlace.value,
+    link: popupAddCardInputLink.value
+  }
+  const card = new Card (newCard)
+  const cardElement = card.getElement()
+  cardsGrid.prepend(cardElement)
+  closePopup(popupAddCardWindow)
+})
+
+popupEditForm.addEventListener('submit', e => {
+  e.preventDefault()
+  profileTitle.textContent = popupEditInputName.value // передаём из инпутов попап в значения profile
+  profileProf.textContent = popupEditInputProf.value
+  closePopup(popupEditWindow) //закрываем попап
+  popupEditForm.reset() // хотя по сути можно не обнулять...хммм
+  // setEventListeners(popupEditForm)
+})
+
+
+// ==================  Закрытие по Overlay  ==================
+function clickOnOverlay(e) {
+  if(e.target === e.currentTarget){
+    closePopup(e.target)
+  }
+}
+popupEdit.addEventListener('click', e => clickOnOverlay(e))
+popupAdd.addEventListener('click', e => clickOnOverlay(e))
+popupImage.addEventListener('click', e => clickOnOverlay(e))
+// не получилось сделать закрытие на оверлей универсальным для всех попап
+// const popup = document.querySelectorAll('.popup')
+// popup.addEventListener('click', e => clickOnOverlay(e))
+// http://joxi.ru/D2PO6bpuJK87Km

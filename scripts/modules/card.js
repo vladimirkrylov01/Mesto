@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(data) {
     this._cardName = data.name
     this._cardLink = data.link
@@ -40,9 +40,20 @@ class Card {
   _remove() {
     this._cardElement.remove()
   }
-// приватный метод - наполняем превью
+
+  _enableEscListener(){
+    document.addEventListener('keyup', this._handleClosePopup)
+  }
+  _handleClosePopup(e){
+    if(e.key === 'Escape'){
+      popupImageWindow.classList.remove(vConfig.openClass)
+    }
+  }
+  // приватный метод - наполняем превью
   _preview() {
-    openPopup(popupImageWindow)
+    // openPopup(popupImageWindow)
+    popupImageWindow.classList.add(vConfig.openClass) // показываем
+    this._enableEscListener()
     const popupImageFigure = popupImageWindow.querySelector('.popup__image') // picture
     const popupImageCaption = popupImageWindow.querySelector('.popup__image-caption') // caption
     popupImageFigure.src = this._cardLink
