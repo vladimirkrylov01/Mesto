@@ -63,6 +63,9 @@ function clickOnOverlay(e) {
   }
 }
 
-all.popupEdit.addEventListener('click', e => clickOnOverlay(e))
-all.popupAdd.addEventListener('click', e => clickOnOverlay(e))
-all.popupImage.addEventListener('click', e => clickOnOverlay(e))
+all.popupWindows.forEach(window => {
+  window.addEventListener('click', e => clickOnOverlay(e))
+})
+// all.popupEdit.addEventListener('click', e => clickOnOverlay(e))
+// all.popupAdd.addEventListener('click', e => clickOnOverlay(e))
+// all.popupImage.addEventListener('click', e => clickOnOverlay(e))

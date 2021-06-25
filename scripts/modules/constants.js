@@ -29,7 +29,7 @@ export const itemCardTemplate = document.querySelector('.cards-grid-template').c
 // ==================  No-Scroll  ==================
 export const mainContainer = document.querySelector('.main-container')
 // ==================  Validate  ==================
-export const popup = document.querySelector('.popup')
+export const popupWindows = document.querySelectorAll('.popup')
 // Настройки
 export const vConfig = {
   formSelector: 'form', // class="form"
