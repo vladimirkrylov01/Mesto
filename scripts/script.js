@@ -52,7 +52,6 @@ all.popupEditForm.addEventListener('submit', () => {
   all.profileTitle.textContent = all.popupEditInputName.value // передаём из инпутов попап в значения profile
   all.profileProf.textContent = all.popupEditInputProf.value
   closePopup(all.popupEditWindow) //закрываем попап
-  all.popupEditForm.reset() // хотя по сути можно не обнулять...хммм
   // setEventListeners(popupEditForm)
 })
 
