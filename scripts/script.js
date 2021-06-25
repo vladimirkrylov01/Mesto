@@ -33,9 +33,11 @@ all.popupAddCardOpenBtn.addEventListener('click', () => {
 })
 
 // ==================  Закрытие на X  ==================
-all.popupEditCloseBtn.addEventListener('click', () => closePopup(all.popupEditWindow))
-all.popupAddCardCloseBtn.addEventListener('click', () => closePopup(all.popupAddCardWindow))
-all.popupImageCloseBtn.addEventListener('click', () => closePopup(all.popupImageWindow))
+// all.popupEditCloseBtn.addEventListener('click', () => closePopup(all.popupEditWindow))
+// all.popupAddCardCloseBtn.addEventListener('click', () => closePopup(all.popupAddCardWindow))
+// all.popupImageCloseBtn.addEventListener('click', () => closePopup(all.popupImageWindow))
+
+
 
 // ==================  Submit Listeners ==================
 all.popupAddForm.addEventListener('submit', () => {
@@ -64,6 +66,9 @@ function clickOnOverlay(e) {
 
 all.popupWindows.forEach(window => {
   window.addEventListener('click', e => clickOnOverlay(e))
+  all.closeButtons.forEach(closebtn => {
+    closebtn.addEventListener('click', () => closePopup(window))
+  })
 })
 // all.popupEdit.addEventListener('click', e => clickOnOverlay(e))
 // all.popupAdd.addEventListener('click', e => clickOnOverlay(e))

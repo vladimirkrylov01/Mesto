@@ -34,8 +34,9 @@ export const itemCardTemplate = document.querySelector('.cards-grid-template').c
 // ==================  No-Scroll  ==================
 export const mainContainer = document.querySelector('.main-container')
 
-// ==================  Validate  ==================
+
 export const popupWindows = document.querySelectorAll('.popup')
+export const closeButtons = document.querySelectorAll('.popup__button-close')
 
 // Настройки
 export const vConfig = {
