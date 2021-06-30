@@ -1,5 +1,5 @@
 // массив из 6ти карточек
-const initialCards = [
+export const initialCards = [
     {
         name: 'Napoli',
         link: 'https://images.unsplash.com/photo-1608543009771-115ebbe9cf39?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=321&q=80'

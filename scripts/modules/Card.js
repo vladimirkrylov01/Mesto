@@ -1,49 +1,43 @@
-import {itemCardTemplate,popupImageWindow} from './constants.js'
+import {popupImageWindow} from './constants.js'
 import {openPopup} from "./utils.js";
+
 export class Card {
-  constructor(data) {
-    this._cardName = data.name
-    this._cardLink = data.link
-    this._cloneCard = itemCardTemplate.cloneNode(true)
-    // this.handleClosePopup = handleClosePopup
+  constructor({name,link},_cardSelector) {
+    this._cardName = name
+    this._cardLink = link
+    this.cardSelector = _cardSelector
   }
-// приватный метод - клонируем и наполняем
+// приватный метод - клонируем
   _getTemplate() {
-    // const cardElement = itemCardTemplate.cloneNode(true) // клонируем карточку из <template>
-    return this._cloneCard
+    return document
+      .querySelector(this.cardSelector)
+      .content
+      .querySelector('.card')
+      .cloneNode(true)
   }
 // приватный метод - вешаем слушатели
   _makeEventListeners() {
-    const cardDeleteBtn = this._cardElement.querySelector('.card__delete-button') // корзина
-    const cardLikeButton = this._cardElement.querySelector('.card__like') // ❤
-    const cardPreview = this._cardElement.querySelector('.card__image') // корзина
-
-    cardDeleteBtn.addEventListener('click', () => {
+    this.card.querySelector('.card__delete-button').addEventListener('click', () => {
       this._remove()
     })
-    cardLikeButton.addEventListener('click', () => {
+    this.card.querySelector('.card__like').addEventListener('click', () => {
       this._like()
     })
-    cardPreview.addEventListener('click', () => {
+    this.card.querySelector('.card__image').addEventListener('click', () => {
       this._preview()
     })
   }
 // приватный метод - лайкаем
   _like() {
-    const cardLikeButton = this._cardElement.querySelector('.card__like')
-    cardLikeButton.classList.toggle('card__like_active')
+    this.card.querySelector('.card__like').classList.toggle('card__like_active')
   }
 // приватный метод - удаляем
   _remove() {
-    this._cardElement.remove()
+    this.card.remove()
   }
-  // _enableEscListener(){
-  //   document.addEventListener('keyup', this.handleClosePopup)
-  // }
   // приватный метод - наполняем превью
   _preview() {
     openPopup(popupImageWindow)
-    // this._enableEscListener()
     const popupImageFigure = popupImageWindow.querySelector('.popup__image') // picture
     const popupImageCaption = popupImageWindow.querySelector('.popup__image-caption') // caption
     popupImageFigure.src = this._cardLink
@@ -51,14 +45,14 @@ export class Card {
     popupImageCaption.textContent = this._cardName
   }
 // публичный метод - возвращаем наружу
-  getElement() {
-    const title = this._cloneCard.querySelector('.card__title')
-    const image = this._cloneCard.querySelector('.card__image')
-    title.textContent = this._cardName // заголовок clone card = initialCards > item.name
-    image.src = this._cardLink // / src clone card = initialCards > item.link
-    image.alt = this._cardName // alt clone card = initialCards > item.name
-    this._cardElement = this._getTemplate()
+  render() {
+    this.card = this._getTemplate()
+    const title = this.card.querySelector('.card__title')
+    const image = this.card.querySelector('.card__image')
+    title.textContent = this._cardName
+    image.src = this._cardLink
+    image.alt = this._cardName
     this._makeEventListeners()
-    return this._cardElement
+    return this.card
   }
 }

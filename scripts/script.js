@@ -3,41 +3,31 @@ import {FormValidator} from "./modules/FormValidator.js";
 import {openPopup, closePopup} from "./modules/utils.js";
 import * as all from "./modules/constants.js"
 
-initialCards.forEach(item => {
-  const card = new Card(item) // Создаём экземпляр карточки
-  const cardElement = card.getElement() // Создаём карточку и возвращаем наружу
+// карточки из массива
+all.initialCards.forEach(item => {
+  const card = new Card(item,'.cards-grid-template') // Создаём экземпляр карточки
+  const cardElement = card.render() // Создаём карточку и возвращаем наружу
   all.cardsGrid.append(cardElement) // Добавляем в DOM
 })
 
 // ==================  Open Buttons Listeners  ==================
-
 all.popupEditOpenBtn.addEventListener('click', () => {
   openPopup(all.popupEditWindow) // открываем попап
   all.popupEditInputName.value = all.profileTitle.textContent // передаём значения из profile в инпуты попапа
   all.popupEditInputProf.value = all.profileProf.textContent
-  // clearInputError(popupEditWindow) // очищаем ошибки в инпутах
-  const formValidate = new FormValidator()
+  const formValidate = new FormValidator(all.vConfig)
   formValidate.enableValidation()
   formValidate.clearInputError(all.popupEditWindow)
 });
 all.popupAddCardOpenBtn.addEventListener('click', () => {
   openPopup(all.popupAddCardWindow) // открываем попап
-  const formValidate = new FormValidator()
+  const formValidate = new FormValidator(all.vConfig)
   formValidate.enableValidation(all.popupAddCardWindow)
   all.button.classList.add(all.vConfig.inactiveButtonClass) // окрашиваем в disabled
   all.button.setAttribute('disabled', true) // делаем неактивной
   formValidate.clearInputError(all.popupAddCardWindow) // очищаем ошибки
-  // clearInputError(popupAddCardWindow) // очищаем ошибки в инпутах
-  // resetAddForm(popupAddCardWindow) // очищаем инпуты
   all.popupAddForm.reset() // очищаем инпуты у формы
 })
-
-// ==================  Закрытие на X  ==================
-// all.popupEditCloseBtn.addEventListener('click', () => closePopup(all.popupEditWindow))
-// all.popupAddCardCloseBtn.addEventListener('click', () => closePopup(all.popupAddCardWindow))
-// all.popupImageCloseBtn.addEventListener('click', () => closePopup(all.popupImageWindow))
-
-
 
 // ==================  Submit Listeners ==================
 all.popupAddForm.addEventListener('submit', () => {
@@ -45,8 +35,8 @@ all.popupAddForm.addEventListener('submit', () => {
     name: all.popupAddCardInputPlace.value,
     link: all.popupAddCardInputLink.value
   }
-  const card = new Card(newCard)
-  const cardElement = card.getElement()
+  const card = new Card(newCard,'.cards-grid-template')
+  const cardElement = card.render()
   all.cardsGrid.prepend(cardElement)
   closePopup(all.popupAddCardWindow)
 })
@@ -59,17 +49,14 @@ all.popupEditForm.addEventListener('submit', () => {
 
 // ==================  Закрытие по Overlay  ==================
 function clickOnOverlay(e) {
-  if (e.target === e.currentTarget) {
+  if (e.target.classList.contains('popup') || e.target.classList.contains('popup__button-close')) {
     closePopup(e.target)
   }
 }
-
-all.popupWindows.forEach(window => {
-  window.addEventListener('click', e => clickOnOverlay(e))
-  all.closeButtons.forEach(closebtn => {
-    closebtn.addEventListener('click', () => closePopup(window))
+all.popupWindows.forEach(popup => {
+  popup.addEventListener('click', e => clickOnOverlay(e))
+  all.closeButtons.forEach(button => {
+    button.addEventListener('click', () => closePopup(popup))
   })
 })
-// all.popupEdit.addEventListener('click', e => clickOnOverlay(e))
-// all.popupAdd.addEventListener('click', e => clickOnOverlay(e))
-// all.popupImage.addEventListener('click', e => clickOnOverlay(e))
+

@@ -1,7 +1,7 @@
-import {vConfig} from "./constants.js";
+
 export class FormValidator{
-  constructor() {
-    this.vConfig = vConfig
+  constructor(_vConfig) {
+    this.vConfig = _vConfig
   }
   _setInputListeners(formElement){
     const inputs = Array.from(formElement.querySelectorAll(this.vConfig.inputSelector)) // находим все инпуты в каждой форме
@@ -16,10 +16,9 @@ export class FormValidator{
 
   enableValidation(){
     const forms = Array.from(document.querySelectorAll(this.vConfig.formSelector)) // находим все формы
-    // console.log(this.vConfig.formSelector)
     forms.forEach(form => {
       form.addEventListener('submit', this._preventDefault) // при submit у формы > f preventFormSubmit1
-      this._setInputListeners(form,) // добавляем слушателей каждой форме (прокидываем форму и настройки)
+      this._setInputListeners(form) // добавляем слушателей каждой форме (прокидываем форму и настройки)
     })
   }
 
