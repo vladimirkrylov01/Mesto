@@ -31,6 +31,11 @@ export const mainContainer = document.querySelector('.main-container')
 export const popupWindows = document.querySelectorAll('.popup')
 export const closeButtons = document.querySelectorAll('.popup__button-close')
 
+export const buttonEdit = document.querySelector('.popup__button-edit')
+
+
+
+
 // Настройки
 export const vConfig = {
   formSelector: 'form', // class="form"

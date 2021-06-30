@@ -17,6 +17,9 @@ all.popupEditOpenBtn.addEventListener('click', () => {
   all.popupEditInputProf.value = all.profileProf.textContent
   const formValidate = new FormValidator(all.vConfig,all.popupEditForm)
   formValidate.enableValidation()
+
+  all.buttonEdit.removeAttribute('disabled')
+  all.buttonEdit.classList.remove(all.vConfig.inactiveButtonClass)
 });
 all.popupAddCardOpenBtn.addEventListener('click', () => {
   openPopup(all.popupAddCardWindow) // открываем попап
