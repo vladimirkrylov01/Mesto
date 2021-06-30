@@ -15,17 +15,13 @@ all.popupEditOpenBtn.addEventListener('click', () => {
   openPopup(all.popupEditWindow) // открываем попап
   all.popupEditInputName.value = all.profileTitle.textContent // передаём значения из profile в инпуты попапа
   all.popupEditInputProf.value = all.profileProf.textContent
-  const formValidate = new FormValidator(all.vConfig)
+  const formValidate = new FormValidator(all.vConfig,all.popupEditForm)
   formValidate.enableValidation()
-  formValidate.clearInputError(all.popupEditWindow)
 });
 all.popupAddCardOpenBtn.addEventListener('click', () => {
   openPopup(all.popupAddCardWindow) // открываем попап
-  const formValidate = new FormValidator(all.vConfig)
-  formValidate.enableValidation(all.popupAddCardWindow)
-  all.button.classList.add(all.vConfig.inactiveButtonClass) // окрашиваем в disabled
-  all.button.setAttribute('disabled', true) // делаем неактивной
-  formValidate.clearInputError(all.popupAddCardWindow) // очищаем ошибки
+  const formValidate = new FormValidator(all.vConfig,all.popupAddForm)
+  formValidate.enableValidation()
   all.popupAddForm.reset() // очищаем инпуты у формы
 })
 

@@ -45,7 +45,7 @@ export const vConfig = {
 export const button = popupAddCardWindow.querySelector(vConfig.submitButtonSelector)
 // ищем все инпуты в массиве инпутов в addForm popup и кладём в inputs
 
-// массив из 6ти карточек
+// массив из карточек
 export const initialCards = [
   {
     name: 'Napoli',
