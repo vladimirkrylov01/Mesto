@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60983f6c-72bb-4c70-82cc-e8062db14b3d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Mesto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/modules/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/modules/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/modules/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/modules/FormValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/modules/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/modules/initial-cards.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +106,7 @@
       <workItem from="1618492301807" duration="6000" />
       <workItem from="1618903404949" duration="5946000" />
       <workItem from="1619434956337" duration="432000" />
-      <workItem from="1625213221687" duration="2531000" />
+      <workItem from="1625213221687" duration="2851000" />
     </task>
     <servers />
   </component>
