@@ -1,12 +1,15 @@
-import {popupImageWindow} from './constants.js'
-import {openPopup} from "./utils.js";
-
 export class Card {
-  constructor({name,link},_cardSelector) {
+  constructor({name, link},
+              _cardSelector,
+              _openPopup,
+              _popupImageWindow) {
     this._cardName = name
     this._cardLink = link
     this.cardSelector = _cardSelector
+    this._openPopup = _openPopup
+    this._popupImageWindow = _popupImageWindow
   }
+
 // приватный метод - клонируем
   _getTemplate() {
     return document
@@ -15,6 +18,7 @@ export class Card {
       .querySelector('.card')
       .cloneNode(true)
   }
+
 // приватный метод - вешаем слушатели
   _makeEventListeners() {
     this.card.querySelector('.card__delete-button').addEventListener('click', () => {
@@ -27,23 +31,27 @@ export class Card {
       this._preview()
     })
   }
+
 // приватный метод - лайкаем
   _like() {
     this.card.querySelector('.card__like').classList.toggle('card__like_active')
   }
+
 // приватный метод - удаляем
   _remove() {
     this.card.remove()
   }
+
   // приватный метод - наполняем превью
   _preview() {
-    openPopup(popupImageWindow)
-    const popupImageFigure = popupImageWindow.querySelector('.popup__image') // picture
-    const popupImageCaption = popupImageWindow.querySelector('.popup__image-caption') // caption
+    this._openPopup(this._popupImageWindow)
+    const popupImageFigure = this._popupImageWindow.querySelector('.popup__image') // picture
+    const popupImageCaption = this._popupImageWindow.querySelector('.popup__image-caption') // caption
     popupImageFigure.src = this._cardLink
     popupImageFigure.alt = this._cardName
     popupImageCaption.textContent = this._cardName
   }
+
 // публичный метод - возвращаем наружу
   render() {
     this.card = this._getTemplate()

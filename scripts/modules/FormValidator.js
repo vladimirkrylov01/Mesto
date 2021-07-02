@@ -1,12 +1,12 @@
-
-export class FormValidator{
-  constructor(_vConfig,_form) {
+export class FormValidator {
+  constructor(_vConfig, _form) {
     this.vConfig = _vConfig
     this.form = _form
     this.inputs = Array.from(this.form.querySelectorAll(this.vConfig.inputSelector)) // находим все инпуты в каждой форме
     this.button = this.form.querySelector(this.vConfig.submitButtonSelector) // находим кнопку
   }
-  _setInputListeners(){
+
+  _setInputListeners() {
     this.inputs.forEach(input => { // для каждого инпута
       input.addEventListener('input', () => { // при событии 'input' - вызываем ф-ию validateInput
         this._validateInput(input) // валидируем инпуты (прокидываем форму, инпут и настройки)
@@ -15,7 +15,7 @@ export class FormValidator{
     })
   }
 
-  enableValidation(){
+  enableValidation() {
     this.clearInputError()
     this._setButtonDisabled()
     const forms = Array.from(document.querySelectorAll(this.vConfig.formSelector)) // находим все формы
@@ -25,12 +25,11 @@ export class FormValidator{
     })
   }
 
-  _preventDefault(e){
+  _preventDefault(e) {
     e.preventDefault()
   }
 
-  clearInputError(){
-    // const inputs = Array.from(popup.querySelectorAll(this.vConfig.inputSelector)) // массив инпутов
+  clearInputError() {
     this.inputs.forEach(input => { // в массиве инпутов берем каждый инпут
       input.classList.remove(this.vConfig.inputErrorClass) // у каждого инпута убираем ___red
       const error = document.querySelector((`.${input.id}-error`)) // выбираем error
@@ -38,41 +37,38 @@ export class FormValidator{
     })
   }
 
-  _showErrorSpan(errorElement,input){
+  _showErrorSpan(errorElement, input) {
     errorElement.textContent = input.validationMessage
     errorElement.classList.add(this.vConfig.errorClass) // делаем ошибку видимой (opacity:1)
   }
 
-  _hideErrorSpan(errorElement){
+  _hideErrorSpan(errorElement) {
     errorElement.textContent = '' // удаляем содержимое ошибки
     errorElement.classList.remove(this.vConfig.errorClass) // делаем ошибку невидимой (opacity:0)
   }
 
-  _setButtonEnabled(){
+  _setButtonEnabled() {
     this.button.disabled = false // сделать кнопку активной
     this.button.classList.remove(this.vConfig.inactiveButtonClass)
   }
 
-  _setButtonDisabled(){
+  _setButtonDisabled() {
     this.button.disabled = true // сделать кнопку неактивной
     this.button.classList.add(this.vConfig.inactiveButtonClass)
   }
 
-  _hasInvalidInputs(){
+  _hasInvalidInputs() {
     return this.inputs.some(input => { // каждому инуту
       return !input.validity.valid // если инпут не прошел валидацию
     })
   }
 
-  _toggleButtonState(){
-    if (this._hasInvalidInputs()) { // если все инпуты не валидны, то
-      this._setButtonDisabled() // сделай кнопку неактивной
-    } else {  // если все инпуты валидны
-      this._setButtonEnabled() // сделай кнопку активной
-    }
+  _toggleButtonState() {
+    // условие ? выполнение условия if  : выполнение условия else;
+    this._hasInvalidInputs() ? this._setButtonDisabled() : this._setButtonEnabled()
   }
 
-  _validateInput(input){
+  _validateInput(input) {
     const errorElement = this.form.querySelector(`.${input.id}-error`) // по классу от id инпута
     if (input.validity.valid) { // если ВАЛИДНО
       input.classList.remove(this.vConfig.inputErrorClass) // убираем border-bottom-color: red
@@ -80,7 +76,7 @@ export class FormValidator{
       return true
     } else {  // иначе НЕ ВАЛИДНО
       input.classList.add(this.vConfig.inputErrorClass) // добавляем border-bottom-color: red
-      this._showErrorSpan(errorElement,input) // показываем spanError
+      this._showErrorSpan(errorElement, input) // показываем spanError
       return false
     }
   }

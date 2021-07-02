@@ -46,9 +46,6 @@ export const vConfig = {
   errorClass: 'form__input-error_active', // opacity 1 - показываем сообщение ошибки)
   openClass: 'popup_opened',
 }
-// Add form button
-export const button = popupAddCardWindow.querySelector(vConfig.submitButtonSelector)
-// ищем все инпуты в массиве инпутов в addForm popup и кладём в inputs
 
 // массив из карточек
 export const initialCards = [
