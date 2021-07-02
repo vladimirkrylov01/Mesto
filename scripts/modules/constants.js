@@ -50,23 +50,23 @@ export const vConfig = {
 // массив из карточек
 export const initialCards = [
   {
-    name: 'Napoli',
-    link: 'https://images.unsplash.com/photo-1608543009771-115ebbe9cf39?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=321&q=80'
+    name: 'Paris',
+    link: 'https://images.unsplash.com/photo-1471960098958-2059c6681742?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2021&q=80'
   },
   {
-    name: 'Palermo',
-    link: 'https://images.unsplash.com/photo-1618048558171-8c9edde77055?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80'
+    name: 'Prague',
+    link: 'https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80'
   },
   {
-    name: 'Taranaki',
-    link: 'https://images.unsplash.com/photo-1617516317753-44d39343408b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80'
+    name: 'Freedom',
+    link: 'https://images.unsplash.com/photo-1495555694070-b0fe5bcd2576?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
   },{
     name: 'Tokyo',
     link: 'https://images.unsplash.com/photo-1527596773609-5f8544271a51?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
   },
   {
-    name: 'Marble Canyon',
-    link: 'https://images.unsplash.com/photo-1617766438319-43fa88164950?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80'
+    name: 'Istanbul',
+    link: 'https://images.unsplash.com/photo-1623439844752-524658b16ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=889&q=80'
   },
   {
     name: 'Tokyo',
