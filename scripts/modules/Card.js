@@ -32,7 +32,7 @@ export class Card {
     })
   }
 
-// приватный метод - лайкаем
+// приватный метод - like
   _like() {
     this.card.querySelector('.card__like').classList.toggle('card__like_active')
   }
@@ -41,10 +41,9 @@ export class Card {
   _remove() {
     this.card.remove()
   }
-
   // приватный метод - наполняем превью
   _preview() {
-    this._openPopup(this._popupImageWindow)
+    this._openPopup(this._popupImageWindow) // открываем popup preview
     const popupImageFigure = this._popupImageWindow.querySelector('.popup__image') // picture
     const popupImageCaption = this._popupImageWindow.querySelector('.popup__image-caption') // caption
     popupImageFigure.src = this._cardLink
