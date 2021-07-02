@@ -29,11 +29,15 @@ all.popupAddCardOpenBtn.addEventListener('click', () => {
 
 // ==================  Submit Listeners ==================
 all.popupAddForm.addEventListener('submit', () => {
-  const newCard = {
-    name: all.popupAddCardInputPlace.value,
-    link: all.popupAddCardInputLink.value
-  }
-  const card = new Card(newCard, '.cards-grid-template', openPopup, all.popupImageWindow)
+  const card = new Card(
+    {
+      name: all.popupAddCardInputPlace.value,
+      link: all.popupAddCardInputLink.value
+    },
+    '.cards-grid-template',
+    openPopup,
+    all.popupImageWindow)
+
   const cardElement = card.render()
   all.cardsGrid.prepend(cardElement)
   closePopup(all.popupAddCardWindow)
@@ -60,20 +64,22 @@ all.popupWindows.forEach(popup => {
 })
 
 function closeClickESC(e) {
-  if(e.key === 'Escape'){
+  if (e.key === 'Escape') {
     const currentPopup = document.querySelector('.popup_opened')
     closePopup(currentPopup)
   }
 }
+
 // ==================  Открываем текущий popup  ==================
 function openPopup(popup) {
   popup.classList.add(all.vConfig.openClass) // показываем
   all.mainContainer.classList.add('no-scroll') // убираем визуально отступ справа
   document.addEventListener('keyup', closeClickESC)
 }
+
 // ==================  Закрываем текущий popup  ==================
 function closePopup(popup) {
   popup.classList.remove(all.vConfig.openClass)
   all.mainContainer.classList.remove('no-scroll')
-  document.removeEventListener('keyup',closeClickESC) // снимаем слушатель ESC
+  document.removeEventListener('keyup', closeClickESC) // снимаем слушатель ESC
 }
