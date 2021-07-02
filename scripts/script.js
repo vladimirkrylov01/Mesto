@@ -4,7 +4,10 @@ import * as all from "./modules/constants.js"
 
 // карточки из массива
 all.initialCards.forEach(item => {
-  const card = new Card(item, '.cards-grid-template', openPopup, all.popupImageWindow)
+  const card = new Card(item,
+    '.cards-grid-template',
+    openPopup,
+    all.popupImageWindow)
   const cardElement = card.render() // Создаём карточку и возвращаем наружу
   all.cardsGrid.append(cardElement) // Добавляем в DOM
 })
@@ -15,15 +18,13 @@ all.popupEditOpenBtn.addEventListener('click', () => {
   // передаём значения из profile в инпуты попапа
   all.popupEditInputName.value = all.profileTitle.textContent
   all.popupEditInputProf.value = all.profileProf.textContent
-  const editProfileValidator = new FormValidator(all.vConfig, all.popupEditForm)
-  editProfileValidator.enableValidation()
+  new FormValidator(all.vConfig, all.popupEditForm).enableValidation()
   all.buttonEdit.removeAttribute('disabled') // делаем кнопку enabled
   all.buttonEdit.classList.remove(all.vConfig.inactiveButtonClass) // делаем кнопку черной
 });
 all.popupAddCardOpenBtn.addEventListener('click', () => {
   openPopup(all.popupAddCardWindow) // открываем попап
-  const addCardValidator = new FormValidator(all.vConfig, all.popupAddForm)
-  addCardValidator.enableValidation()
+  new FormValidator(all.vConfig, all.popupAddForm).enableValidation()
   all.popupAddForm.reset() // очищаем инпуты у формы
 })
 
