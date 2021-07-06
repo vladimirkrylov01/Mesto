@@ -1,4 +1,4 @@
-// ==================  Edit popup  ==================
+import {FormValidator} from "./FormValidator.js";
 
 export const popupEditForm = document.forms['editPopupForm'], // form name="editPopupForm"
   popupEditInputName = popupEditForm.elements.name, // input name="name"
@@ -84,3 +84,5 @@ export const initialCards = [
 
 ];
 
+export const editProfileFormValidator = new FormValidator(vConfig, popupEditForm)
+export const addCardFormValidator = new FormValidator(vConfig, popupAddForm)

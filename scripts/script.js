@@ -1,5 +1,4 @@
 import {Card} from "./modules/Card.js";
-import {FormValidator} from "./modules/FormValidator.js";
 import * as all from "./modules/constants.js"
 
 // карточки из массива
@@ -12,29 +11,25 @@ all.initialCards.forEach(item => {
   all.cardsGrid.append(cardElement) // Добавляем в DOM
 })
 
-const editProfileFormValidator = new FormValidator(all.vConfig,all.popupEditForm)
-const addCardFormValidator = new FormValidator(all.vConfig,all.popupAddForm)
-
 // ==================  Open Buttons Listeners  ==================
 all.popupEditOpenBtn.addEventListener('click', () => {
   openPopup(all.popupEditWindow) // открываем попап
   // передаём значения из profile в инпуты попапа
   all.popupEditInputName.value = all.profileTitle.textContent
   all.popupEditInputProf.value = all.profileProf.textContent
-  editProfileFormValidator.enableValidation()
+  all.editProfileFormValidator.enableValidation()
   all.buttonEdit.removeAttribute('disabled') // делаем кнопку enabled
   all.buttonEdit.classList.remove(all.vConfig.inactiveButtonClass) // делаем кнопку черной
 });
 all.popupAddCardOpenBtn.addEventListener('click', () => {
   openPopup(all.popupAddCardWindow) // открываем попап
-  addCardFormValidator.enableValidation()
+  all.addCardFormValidator.enableValidation()
   all.popupAddForm.reset() // очищаем инпуты у формы
 })
 
 // ==================  Submit Listeners ==================
 all.popupAddForm.addEventListener('submit', () => {
-  const card = new Card(
-    {
+  const card = new Card({
       name: all.popupAddCardInputPlace.value,
       link: all.popupAddCardInputLink.value
     },
@@ -50,7 +45,6 @@ all.popupEditForm.addEventListener('submit', () => {
   all.profileTitle.textContent = all.popupEditInputName.value // передаём из инпутов попап в значения profile
   all.profileProf.textContent = all.popupEditInputProf.value
   closePopup(all.popupEditWindow) //закрываем попап
-  // setEventListeners(popupEditForm)
 })
 
 // ==================  Закрытие по Overlay  ==================
