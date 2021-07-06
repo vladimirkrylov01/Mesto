@@ -1,4 +1,5 @@
 // ==================  Edit popup  ==================
+
 export const popupEditForm = document.forms['editPopupForm'], // form name="editPopupForm"
   popupEditInputName = popupEditForm.elements.name, // input name="name"
   popupEditInputProf = popupEditForm.elements.profession // input "prof"
@@ -82,6 +83,4 @@ export const initialCards = [
   },
 
 ];
-
-
 

@@ -12,19 +12,22 @@ all.initialCards.forEach(item => {
   all.cardsGrid.append(cardElement) // Добавляем в DOM
 })
 
+const editProfileFormValidator = new FormValidator(all.vConfig,all.popupEditForm)
+const addCardFormValidator = new FormValidator(all.vConfig,all.popupAddForm)
+
 // ==================  Open Buttons Listeners  ==================
 all.popupEditOpenBtn.addEventListener('click', () => {
   openPopup(all.popupEditWindow) // открываем попап
   // передаём значения из profile в инпуты попапа
   all.popupEditInputName.value = all.profileTitle.textContent
   all.popupEditInputProf.value = all.profileProf.textContent
-  new FormValidator(all.vConfig, all.popupEditForm).enableValidation()
+  editProfileFormValidator.enableValidation()
   all.buttonEdit.removeAttribute('disabled') // делаем кнопку enabled
   all.buttonEdit.classList.remove(all.vConfig.inactiveButtonClass) // делаем кнопку черной
 });
 all.popupAddCardOpenBtn.addEventListener('click', () => {
   openPopup(all.popupAddCardWindow) // открываем попап
-  new FormValidator(all.vConfig, all.popupAddForm).enableValidation()
+  addCardFormValidator.enableValidation()
   all.popupAddForm.reset() // очищаем инпуты у формы
 })
 
