@@ -1,13 +1,11 @@
 export class Card {
   constructor({name, link},
               _cardSelector,
-              _openPopup,
-              _popupImageWindow) {
+              _cardImageClickHandler) {
     this._cardName = name
     this._cardLink = link
     this.cardSelector = _cardSelector
-    this._openPopup = _openPopup
-    this._popupImageWindow = _popupImageWindow
+    this._cardImageClickHandler = _cardImageClickHandler
   }
 
 // приватный метод - клонируем
@@ -27,9 +25,8 @@ export class Card {
     this.card.querySelector('.card__like').addEventListener('click', () => {
       this._like()
     })
-    this.card.querySelector('.card__image').addEventListener('click', () => {
-      this._preview()
-    })
+    this.card.querySelector('.card__image').addEventListener('click', () =>
+      this._cardImageClickHandler(this._cardName,this._cardLink))
   }
 
 // приватный метод - like
@@ -41,18 +38,9 @@ export class Card {
   _remove() {
     this.card.remove()
   }
-  // приватный метод - наполняем превью
-  _preview() {
-    this._openPopup(this._popupImageWindow) // открываем popup preview
-    const popupImageFigure = this._popupImageWindow.querySelector('.popup__image') // picture
-    const popupImageCaption = this._popupImageWindow.querySelector('.popup__image-caption') // caption
-    popupImageFigure.src = this._cardLink
-    popupImageFigure.alt = this._cardName
-    popupImageCaption.textContent = this._cardName
-  }
 
 // публичный метод - возвращаем наружу
-  render() {
+  renderCard() {
     this.card = this._getTemplate()
     const title = this.card.querySelector('.card__title')
     const image = this.card.querySelector('.card__image')

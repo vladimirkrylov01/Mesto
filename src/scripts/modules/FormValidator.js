@@ -17,7 +17,7 @@ export class FormValidator {
 
   enableValidation() {
     this.clearInputError()
-    this._setButtonDisabled()
+    // this._setButtonDisabled()
     const forms = Array.from(document.querySelectorAll(this.vConfig.formSelector)) // находим все формы
     forms.forEach(form => {
       form.addEventListener('submit', this._preventDefault) // при submit у формы > f preventFormSubmit1
