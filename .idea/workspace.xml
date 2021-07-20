@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="60983f6c-72bb-4c70-82cc-e8062db14b3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/card/__delete/card__delete-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/card/__delete/card__delete-button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/form/__field/form__field.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/form/__field/form__field.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Section.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/SubmitForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/modules/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/modules/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/FormValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/utils/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/card/__like/card__like.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/card/__like/card__like.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,9 +68,9 @@
       <recent name="C:\Users\RZR-1\dev\Mesto\scripts\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\RZR-1\dev\Mesto" />
       <recent name="C:\Users\RZR-1\dev\Mesto\src\pages" />
       <recent name="C:\Users\RZR-1\dev\Mesto\src\scripts\components" />
-      <recent name="C:\Users\RZR-1\dev\Mesto" />
       <recent name="C:\Users\RZR-1\dev\Mesto\src\images" />
       <recent name="C:\Users\RZR-1\dev\Mesto\src" />
     </key>
@@ -168,7 +159,7 @@
       <workItem from="1619434956337" duration="432000" />
       <workItem from="1625213221687" duration="28667000" />
       <workItem from="1626085876555" duration="23462000" />
-      <workItem from="1626674766607" duration="45936000" />
+      <workItem from="1626674766607" duration="47188000" />
     </task>
     <servers />
   </component>
