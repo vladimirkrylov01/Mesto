@@ -37,16 +37,17 @@ export class Card {
 // приватный метод - удаляем
   _remove() {
     this.card.remove()
+    this.card = null
   }
 
 // публичный метод - возвращаем наружу
   renderCard() {
     this.card = this._getTemplate()
-    const title = this.card.querySelector('.card__title')
-    const image = this.card.querySelector('.card__image')
-    title.textContent = this._cardName
-    image.src = this._cardLink
-    image.alt = this._cardName
+    this._title = this.card.querySelector('.card__title')
+    this._image = this.card.querySelector('.card__image')
+    this._title.textContent = this._cardName
+    this._image.src = this._cardLink
+    this._image.alt = this._cardName
     this._makeEventListeners()
     return this.card
   }

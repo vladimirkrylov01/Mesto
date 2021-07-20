@@ -1,32 +1,14 @@
+// ==================  Edit popup  ==================
 export const popupEditForm = document.forms['editPopupForm'], // form name="editPopupForm"
   nameInput = popupEditForm.elements.name, // input name="name"
   profInput = popupEditForm.elements.profession // input "prof"
 
-export const popupEditOpenBtn = document.querySelector('.profile__button-edit') // open [ edit ]
-
 // ==================  Add popup  ==================
-export const popupAddForm = document.forms['addPopupForm'], // form name ="addPopupForm"
-  popupAddCardInputPlace = popupAddForm.elements.place, // name="place"
-  popupAddCardInputLink = popupAddForm.elements.link // name="link"
+export const popupAddForm = document.forms['addPopupForm'] // form name ="addPopupForm"
 
 // ================== Open Buttons  ==================
-export const popupAddCardOpenBtn = document.querySelector('.profile__button-add'), // open [ + ]
-  buttonEdit = document.querySelector('.popup__button-edit')
-
-// ==================  Preview popup  ==================
-// export const popupPreviewWindow = document.querySelector('.popup-type-image') // preview popup window
-
-// ==================  Profile  ==================
-// export const profileTitle = document.querySelector('.profile__title')
-  // profileProf = document.querySelector('.profile__profession')
-
-// ==================  Card  ==================
-export const cardsGrid = document.querySelector('.cards-grid') // DOM
-
-// ==================  No-Scroll  ==================
-
-// export const popupWindows = document.querySelectorAll('.popup')
-// export const closeButtons = document.querySelectorAll('.popup__button-close')
+export const popupAddCardOpenBtn = document.querySelector('.profile__button-add') // open [ + ]
+export const popupEditOpenBtn = document.querySelector('.profile__button-edit') // open [ edit ]
 
 // Настройки
 export const vConfig = {

@@ -18,11 +18,9 @@ export class FormValidator {
   enableValidation() {
     this.clearInputError()
     // this._setButtonDisabled()
-    const forms = Array.from(document.querySelectorAll(this.vConfig.formSelector)) // находим все формы
-    forms.forEach(form => {
-      form.addEventListener('submit', this._preventDefault) // при submit у формы > f preventFormSubmit1
-      this._setInputListeners(form) // добавляем слушателей каждой форме (прокидываем форму и настройки)
-    })
+    // const forms = Array.from(document.querySelectorAll(this.vConfig.formSelector)) // находим все формы
+      this.form.addEventListener('submit', this._preventDefault) // при submit у формы > f preventFormSubmit1
+      this._setInputListeners(this.form) // добавляем слушателей каждой форме (прокидываем форму и настройки)
   }
 
   _preventDefault(e) {
@@ -47,12 +45,12 @@ export class FormValidator {
     errorElement.classList.remove(this.vConfig.errorClass) // делаем ошибку невидимой (opacity:0)
   }
 
-  _setButtonEnabled() {
+  setButtonEnabled() {
     this.button.disabled = false // сделать кнопку активной
     this.button.classList.remove(this.vConfig.inactiveButtonClass)
   }
 
-  _setButtonDisabled() {
+  setButtonDisabled() {
     this.button.disabled = true // сделать кнопку неактивной
     this.button.classList.add(this.vConfig.inactiveButtonClass)
   }
@@ -65,7 +63,7 @@ export class FormValidator {
 
   _toggleButtonState() {
     // условие ? выполнение условия if  : выполнение условия else;
-    this._hasInvalidInputs() ? this._setButtonDisabled() : this._setButtonEnabled()
+    this._hasInvalidInputs() ? this.setButtonDisabled() : this.setButtonEnabled()
   }
 
   _validateInput(input) {

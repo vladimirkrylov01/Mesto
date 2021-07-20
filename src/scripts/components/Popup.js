@@ -6,12 +6,12 @@ export class Popup {
   }
 
   openPopup() {
-    document.addEventListener('keyup',this._handleEscClose)
+    document.addEventListener('keydown',this._handleEscClose)
     this._popup.classList.add(vConfig.openClass) // 'popup_opened'
   }
 
   closePopup() {
-    document.removeEventListener('keyup',this._handleEscClose)
+    document.removeEventListener('keydown',this._handleEscClose)
     this._popup.classList.remove(vConfig.openClass)
   }
 
