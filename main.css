@@ -2,6 +2,7 @@
 @font-face{font-family:Inter;font-style:normal;font-weight:400;src:url(26a30a5f1103393aac70.woff2?v=3.15) format("woff2"),url(e148c4a1158f8cee8285.woff?v=3.15) format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:500;src:url(d0a58d956cf2f4cf078f.woff2?v=3.15) format("woff2"),url(eec0ea57721daa33c7a2.woff?v=3.15) format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:900;src:url(768169b1912340d378ac.woff2?v=3.15) format("woff2"),url(7bb6234314ccc72c942a.woff?v=3.15) format("woff")}
 .main-container{background-color:#000;color:#fff;font-family:Inter,Arial,Helvetica,sans-serif;margin:0 auto;max-width:1280px;min-width:320px}
 .wrapper{margin:0 auto;max-width:880px;min-width:282px}
+.hidden{visibility:hidden}
 .header{border-bottom:1px solid rgba(84,84,84,.7);margin-top:40px;padding-bottom:41px}@media screen and (max-width:320px){.header{margin-top:28px;padding-bottom:36px}}
 @media screen and (max-width:1023px){.header__logo{height:24px;margin:0 27px;width:103px}}
 .cards-grid{grid-column-gap:17px;grid-row-gap:22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(282px,1fr));grid-template-rows:repeat(auto-fill,minmax(0,1fr));margin-top:50px}@media screen and (max-width:1023px){.cards-grid{gap:12px;margin:40px 19px 0}}@media screen and (max-width:423px){.cards-grid{gap:20px;margin:0 19px}}
@@ -13,6 +14,7 @@
 .card__like_active{background:url(c11056b60ada064cc583.svg) 50% no-repeat;opacity:1;transition:opacity .3s ease-in-out,transform .3s ease-in-out}.card__like_active:hover{transform:scale(1.2)}.card__like_active:hover:active{opacity:1}
 .card__delete-button{background:url(dd7c53a4f441c8d3b43a.svg)transparent 50% no-repeat;border:none;height:19.3px;position:absolute;right:15px;top:18px;transition:opacity .3s ease-in-out,transform .3s ease-in-out;width:18px}.card__delete-button:focus{border:none;outline:none}.card__delete-button:hover{cursor:pointer;opacity:.5;transform:scale(1.2)}
 .card__likes-container{align-content:center;display:flex;flex-direction:column;margin:0 5px 0 0;text-align:center}
+.card__likes-count{color:#000;font-size:13px;line-height:1.23;margin-right:19px;margin-top:5px;min-height:15px;text-align:center}
 .popup{align-items:center;background-color:rgba(0,0,0,.5);background-size:contain;bottom:0;box-sizing:border-box;display:flex;flex-direction:column;height:100vh;justify-content:center;left:0;opacity:0;position:fixed;right:0;top:0;transition:visibility .3s,opacity .3s ease-in-out;visibility:hidden;width:100vw}
 .popup__overlay{bottom:0;height:100vh;left:0;position:absolute;right:0;top:0;width:100vw}
 .popup__overlay_image{background-color:rgba(0,0,0,.9)}
