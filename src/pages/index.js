@@ -36,7 +36,6 @@ const userInfo = new UserInfo('.profile__title', '.profile__profession', '.profi
 Promise.all([
   api.getUserInfo(),
   api.getInitialCards(),
-  api.updateAvatar(),
 ])
   .then(([userData, cards]) => {
     user = userData._id
@@ -72,13 +71,13 @@ function createCard(cardData) {
 const photoGridSection = new Section({
   items: initialCards,
   renderer: data => {
-    const card = createCard(data);
-    photoGridSection.addItem(card);
+    const card = createCard(data)
+    photoGridSection.addItem(card)
   }
 }, '.cards-grid')
 
 function renderInitialCards(cards) {
-  photoGridSection.renderItems(cards);
+  photoGridSection.renderItems(cards)
 }
 
 function deleteCardClickHandler(card) {
@@ -86,7 +85,7 @@ function deleteCardClickHandler(card) {
 }
 
 function cardImageClickHandler(title, link) {
-  popupWithImage.openPopup(title, link);
+  popupWithImage.openPopup(title, link)
 }
 
 function likeClickHandler(card) {
@@ -110,9 +109,12 @@ function editProfileSubmitHandler(inputsData) {
 }
 
 function editAvatarSubmitHandler(inputData) {
-  api.updateAvatar({avatar: inputData.avatar})
+  api.updateAvatar({
+    avatar: inputData.avatar
+  })
     .then(inputsDataUpdated => {
-      setInitialUserData(inputsDataUpdated.avatar)
+      userInfo.setUserInfo(inputsDataUpdated)
+      // setInitialUserData(inputsDataUpdated.avatar)
       popupWithAvatarForm.closePopup()
     })
     .catch(console.error)
@@ -181,6 +183,7 @@ popupAddCardOpenBtn.addEventListener('click', () => {
 })
 
 avatarEditBtn.addEventListener('click', () => {
+  avatarFormValidator.setButtonDisabled()
   avatarFormValidator.clearInputError()
   popupWithAvatarForm.openPopup()
 })

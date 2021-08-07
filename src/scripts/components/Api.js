@@ -20,7 +20,7 @@ export class Api {
         authorization: this.token,
         'Content-Type': 'application/json'
       }
-    };
+    }
     return fetch (
       `${this.address}/${this.cohortId}/${endpoint}`,
       body
