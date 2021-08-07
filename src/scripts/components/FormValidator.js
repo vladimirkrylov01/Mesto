@@ -46,11 +46,13 @@ export class FormValidator {
   setButtonEnabled() {
     this.button.removeAttribute('disabled') // сделать кнопку активной
     this.button.classList.remove(this.vConfig.inactiveButtonClass)
+    this.button.style.cursor = "pointer"
   }
 
   setButtonDisabled() {
     this.button.setAttribute('disabled', true) // сделать кнопку неактивной
     this.button.classList.add(this.vConfig.inactiveButtonClass)
+    this.button.style.cursor = "unset"
   }
 
   _hasInvalidInputs() {

@@ -74,7 +74,7 @@
       <recent name="C:\Users\RZR-1\dev\Mesto\src\images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/Mesto/src/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -124,8 +124,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="JavaScript Debug.index.html" />
       </list>
@@ -171,7 +171,7 @@
       <workItem from="1625213221687" duration="28667000" />
       <workItem from="1626085876555" duration="23462000" />
       <workItem from="1626674766607" duration="47435000" />
-      <workItem from="1628141519188" duration="42270000" />
+      <workItem from="1628141519188" duration="43677000" />
     </task>
     <servers />
   </component>
