@@ -5,29 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60983f6c-72bb-4c70-82cc-e8062db14b3d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/card/__likes-container/card__likes-container.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/card/__likes/card__likes-count.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/form/_type_delete-card/form_type_delete-card.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/hidden/hidden.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__container/profile__container.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__overlay/profile__overlay.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/profile/__pen/profile__pen.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/profile/profilePen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/components/Api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/components/PopupWithConfirm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/profile/__avatar/profile__avatar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/profile/__avatar/profile__avatar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/FormValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/PopupWithForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Section.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/UserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +75,7 @@
       <recent name="C:\Users\RZR-1\dev\Mesto\src\images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.deploy">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/Mesto/src/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -146,8 +125,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.build" />
         <item itemvalue="JavaScript Debug.index.html" />
       </list>
@@ -193,7 +172,7 @@
       <workItem from="1625213221687" duration="28667000" />
       <workItem from="1626085876555" duration="23462000" />
       <workItem from="1626674766607" duration="47435000" />
-      <workItem from="1628141519188" duration="37747000" />
+      <workItem from="1628141519188" duration="38590000" />
     </task>
     <servers />
   </component>
