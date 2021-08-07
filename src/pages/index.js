@@ -114,7 +114,6 @@ function editAvatarSubmitHandler(inputData) {
   })
     .then(inputsDataUpdated => {
       userInfo.setUserInfo(inputsDataUpdated)
-      // setInitialUserData(inputsDataUpdated.avatar)
       popupWithAvatarForm.closePopup()
     })
     .catch(console.error)

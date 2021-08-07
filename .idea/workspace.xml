@@ -7,7 +7,6 @@
     <list default="true" id="60983f6c-72bb-4c70-82cc-e8062db14b3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
       <recent name="C:\Users\RZR-1\dev\Mesto\src\images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/Mesto/src/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -173,7 +172,7 @@
       <workItem from="1625213221687" duration="28667000" />
       <workItem from="1626085876555" duration="23462000" />
       <workItem from="1626674766607" duration="47435000" />
-      <workItem from="1628141519188" duration="39820000" />
+      <workItem from="1628141519188" duration="41335000" />
     </task>
     <servers />
   </component>

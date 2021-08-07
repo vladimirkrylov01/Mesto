@@ -86,7 +86,7 @@ export class Card {
     cardPreviewImage.src = this._link
     cardPreviewImage.alt = this._name
 
-    this.card = this._getTemplate()
+    // this.card = this._getTemplate()
     this._title = this.card.querySelector('.card__title')
     this._image = this.card.querySelector('.card__image')
     this._title.textContent = this._name
