@@ -1,18 +1,23 @@
-// ==================  Edit popup  ==================
-export const popupEditForm = document.forms['editPopupForm'], // form name="editPopupForm"
-  nameInput = popupEditForm.elements.name, // input name="name"
-  profInput = popupEditForm.elements.profession // input "prof"
 
-// ==================  Add popup  ==================
+// ==================  Forms  ==================
+export const popupEditForm = document.forms['editPopupForm'] // form name="editPopupForm"
 export const popupAddForm = document.forms['addPopupForm'] // form name ="addPopupForm"
+export const popupAvatarForm = document.forms['editAvatarForm'] // form name ="editAvatarForm"
+
+export const avatarEditBtn = document.querySelector('.profile__overlay')
+
+// ==================  Inputs  ==================
+export const nameInput = popupEditForm.elements.name // input name="name"
+export const profInput = popupEditForm.elements.profession // input "prof"
 
 // ================== Open Buttons  ==================
 export const popupAddCardOpenBtn = document.querySelector('.profile__button-add') // open [ + ]
 export const popupEditOpenBtn = document.querySelector('.profile__button-edit') // open [ edit ]
+export const cardsGridTemplate = '.cards-grid-template'
 
 // Настройки
 export const vConfig = {
-  formSelector: 'form', // class="form"
+  formSelector: '.form', // class="form"
   inputSelector: '.form__input', //  class="form__input"
   submitButtonSelector: '.form__submit', // class="form__submit"
   inactiveButtonClass: 'popup__button-submit_disabled', // disabled button

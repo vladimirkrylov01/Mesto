@@ -17,10 +17,8 @@ export class FormValidator {
 
   enableValidation() {
     this.clearInputError()
-    // this._setButtonDisabled()
-    // const forms = Array.from(document.querySelectorAll(this.vConfig.formSelector)) // находим все формы
-      this.form.addEventListener('submit', this._preventDefault) // при submit у формы > f preventFormSubmit1
-      this._setInputListeners(this.form) // добавляем слушателей каждой форме (прокидываем форму и настройки)
+    this.form.addEventListener('submit', this._preventDefault) // при submit у формы > f preventFormSubmit1
+    this._setInputListeners(this.form) // добавляем слушателей каждой форме (прокидываем форму и настройки)
   }
 
   _preventDefault(e) {
@@ -46,12 +44,12 @@ export class FormValidator {
   }
 
   setButtonEnabled() {
-    this.button.disabled = false // сделать кнопку активной
+    this.button.removeAttribute('disabled') // сделать кнопку активной
     this.button.classList.remove(this.vConfig.inactiveButtonClass)
   }
 
   setButtonDisabled() {
-    this.button.disabled = true // сделать кнопку неактивной
+    this.button.setAttribute('disabled', true) // сделать кнопку неактивной
     this.button.classList.add(this.vConfig.inactiveButtonClass)
   }
 

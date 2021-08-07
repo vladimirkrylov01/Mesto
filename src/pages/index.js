@@ -1,53 +1,13 @@
 import './index.css'
-import btnClose from '../images/button/popup__button-close.svg';
-import cardsBtnDel from '../images/cards/card_btn_delete.svg';
-import headerLogo from '../images/header/header__logo.svg';
-import likeActive from '../images/like/like-active.svg';
-import likeDisabled from '../images/like/like-disabled.svg';
-import addBtn from '../images/profile/add.svg';
-import editBtn from '../images/profile/edit.svg';
 
-
-// у меня возник вопрос, как сделать реализацию const initialCards не через ссылки с unsplash,
-// а через эти переменные (изображения в проекте) ?
-
-const Tenerife = new URL('../images/Tenerife.jpg', import.meta.url);
-const Hong = new URL('../images/Hong.jpg', import.meta.url);
-const Istanbul = new URL('../images/Istanbul.jpg', import.meta.url);
-const Kospa = new URL('../images/Kospa.jpg', import.meta.url);
-const Paris = new URL('../images/Paris.jpg', import.meta.url);
-const Prague = new URL('../images/Prague.jpg', import.meta.url);
-const Freedom = new URL('../images/Freedom.jpg', import.meta.url);
-const Tokyo = new URL('../images/Tokyo.jpg', import.meta.url);
-const Tokyo_4 = new URL('../images/Tokyo_4.jpg', import.meta.url);
-
-const whoIsTheGoat = [
-  // меняем исходные пути на переменные
-  { name: 'btnClose', image: btnClose },
-  { name: 'cardsBtnDel', link: cardsBtnDel },
-  { name: 'headerLogo', link: headerLogo },
-  { name: 'likeActive', link: likeActive },
-  { name: 'likeDisabled', link: likeDisabled },
-  { name: 'addBtn', link: addBtn },
-  { name: 'editBtn', link: editBtn },
-  { name: 'Tenerife', link: Tenerife },
-  { name: 'Hong', link: Hong },
-  { name: 'Istanbul', link: Istanbul },
-  { name: 'Kospa', link: Kospa },
-  { name: 'Paris', link: Paris },
-  { name: 'Prague', link: Prague },
-  { name: 'Freedom', link: Freedom },
-  { name: 'Tokyo', link: Tokyo },
-  { name: 'Tokyo_4', link: Tokyo_4 },
-];
-
+import {Api} from "../scripts/components/Api.js";
 import {Card} from "../scripts/components/Card.js"
 import {FormValidator} from "../scripts/components/FormValidator.js"
 import {UserInfo} from "../scripts/components/UserInfo.js"
 import {PopupWithForm} from "../scripts/components/PopupWithForm.js"
 import {PopupWithImage} from "../scripts/components/PopupWithImage.js"
 import {Section} from "../scripts/components/Section.js"
-// import {SubmitForm} from "./components/SubmitForm.js";
+import {PopupWithConfirm} from "../scripts/components/PopupWithConfirm.js"
 import {
   vConfig,
   popupEditForm,
@@ -57,99 +17,170 @@ import {
   profInput,
   popupAddCardOpenBtn,
   initialCards,
-} from "../scripts/utils/constants.js";
+  cardsGridTemplate,
+  popupAvatarForm, avatarEditBtn,
+} from "../scripts/utils/constants.js"
 
-function createCard(cardData){
+let user;
+
+
+
+const api = new Api(
+  'https://nomoreparties.co/v1',
+  '7334389e-9ffb-4678-b7ba-2496fb9a2222',
+  'cohort-26'
+)
+
+const userInfo = new UserInfo('.profile__title', '.profile__profession', '.profile__avatar')
+
+Promise.all([
+  api.getUserInfo(),
+  api.getInitialCards(),
+  api.updateAvatar(),
+])
+  .then(([userData, cards]) => {
+    user = userData._id
+    setInitialUserData(userData)
+    renderInitialCards(cards)
+  })
+  .catch(console.error)
+
+
+function setInitialUserData(userData) {
+  userInfo.setUserInfo({
+    name: userData.name,
+    about: userData.about,
+    avatar: userData.avatar,
+    id: userData._id
+  })
+}
+
+function createCard(cardData) {
+  const user = userInfo.getUserId()
   const card = new Card(
     cardData,
-    '.cards-grid-template',
-    cardImageClickHandler
+    user,
+    cardsGridTemplate,
+    cardImageClickHandler,
+    deleteCardClickHandler,
+    likeClickHandler
   )
-  return card.renderCard()
+  return card.renderCard();
 }
-
-const editProfileSubmitHandler = data => {
-  userInfo.setUserInfo({
-    name: data.name,  // input name="name"
-    about: data.profession // input name="profession"
-  })
-  popupWithEditForm.closePopup()
-}
-
-const addCardSubmitHandler = ({place,link}) => {
-  const newCard = createCard({
-    name:  place, // input name="place"
-    link:  link, // input name="link"
-  })
-  cardsGridTemplate.addItem(newCard)
-  popupWithAddForm.closePopup()
-}
-
-// Логика отрисовки карточек при помощи Section
-const cardsGridTemplate = new Section({
-  renderer: item => { // каждую отрисовываем
-    const card = createCard(item)
-    cardsGridTemplate.addItem(card) // и вставляем в template '.cards-grid'
-  }
-}, '.cards-grid') // куда рисуем карточку
 
 // отрисовка шаблонных карточек
-cardsGridTemplate.renderItems(initialCards)
+const photoGridSection = new Section({
+  items: initialCards,
+  renderer: data => {
+    const card = createCard(data);
+    photoGridSection.addItem(card);
+  }
+}, '.cards-grid')
 
-// валидация для Edit Popup
+function renderInitialCards(cards) {
+  photoGridSection.renderItems(cards);
+}
+
+function deleteCardClickHandler(card) {
+  popupWithConfirmationForm.openPopup(card)
+}
+
+function cardImageClickHandler(title, link) {
+  popupWithImage.openPopup(title, link);
+}
+
+function likeClickHandler(card) {
+  api.likeCard(card.getId(), card.getIsLiked())
+    .then((response) => {
+      card.updateLikes(response.likes)
+    })
+    .catch(console.error);
+}
+
+function editProfileSubmitHandler(inputsData) {
+  api.updateUserInfo({
+    name: inputsData.name,
+    about: inputsData.profession
+  })
+    .then(inputsDataUpdated => {
+      userInfo.setUserInfo(inputsDataUpdated)
+      popupWithEditForm.closePopup()
+    })
+    .catch(console.error)
+}
+
+function editAvatarSubmitHandler(inputData) {
+  api.updateAvatar({avatar: inputData.avatar})
+    .then(inputsDataUpdated => {
+      setInitialUserData(inputsDataUpdated.avatar)
+      popupWithAvatarForm.closePopup()
+    })
+    .catch(console.error)
+}
+
+function addCardSubmitHandler(inputsData) {
+  api.addNewCard(inputsData)
+    .then((card) => {
+      const newCard = createCard(card)
+      photoGridSection.addItem(newCard)
+      popupWithAddForm.closePopup()
+    })
+    .catch(console.error)
+}
+
+function confirmDeletingSubmitHandler() {
+  const card = popupWithConfirmationForm.getId()
+  api.deleteCard(card._id)
+    .then(() => {
+      card.remove()
+      popupWithConfirmationForm.closePopup()
+    })
+    .catch(console.error)
+}
+
+// ===========================================================================
+
 const editProfileFormValidator = new FormValidator(vConfig, popupEditForm)
 editProfileFormValidator.enableValidation()
 
-// валидация для Add Popup
 const addCardFormValidator = new FormValidator(vConfig, popupAddForm)
 addCardFormValidator.enableValidation()
 
-const userInfo = new UserInfo('.profile__title', '.profile__profession')
-
-const popupWithEditForm = new PopupWithForm('.popup-type-edit',editProfileSubmitHandler)
-popupWithEditForm.setEventListeners()
-
-const popupWithAddForm = new PopupWithForm('.popup-type-add-card',addCardSubmitHandler)
-popupWithAddForm.setEventListeners()
+const avatarFormValidator = new FormValidator(vConfig, popupAvatarForm)
+avatarFormValidator.enableValidation()
 
 const popupWithImage = new PopupWithImage('.popup-type-image')
 popupWithImage.setEventListeners()
 
-function cardImageClickHandler(title,link){
-  popupWithImage.openPopup(title,link)
-}
+const popupWithEditForm = new PopupWithForm('.popup-type-edit', editProfileSubmitHandler)
+popupWithEditForm.setEventListeners()
 
-// ==================  Edit form  ==================
+const popupWithAddForm = new PopupWithForm('.popup-type-add-card', addCardSubmitHandler)
+popupWithAddForm.setEventListeners()
+
+const popupWithAvatarForm = new PopupWithForm('.popup-edit-avatar', editAvatarSubmitHandler)
+popupWithAvatarForm.setEventListeners()
+
+const popupWithConfirmationForm = new PopupWithConfirm('.popup-type-delete', confirmDeletingSubmitHandler)
+popupWithConfirmationForm.setEventListeners()
+
+// ===========================================================================
+
 popupEditOpenBtn.addEventListener('click', () => {
-  popupWithEditForm.openPopup()
   editProfileFormValidator.clearInputError()
-  editProfileFormValidator.setButtonEnabled()
-
-  const user = userInfo.getUserInfo()
-  // передаём значения из profile в инпуты попапа
-  nameInput.value = user.name
-  profInput.value = user.profession
-
+  popupWithEditForm.openPopup()
+  const data = userInfo.getUserInfo()
+  nameInput.value = data.name
+  profInput.value = data.profession
 })
 
-// ==================  Add form ==================
 popupAddCardOpenBtn.addEventListener('click', () => {
-  addCardFormValidator.clearInputError()
   addCardFormValidator.setButtonDisabled()
+  addCardFormValidator.clearInputError()
   popupWithAddForm.openPopup()
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
+avatarEditBtn.addEventListener('click', () => {
+  avatarFormValidator.clearInputError()
+  popupWithAvatarForm.openPopup()
+})
