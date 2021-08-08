@@ -3,6 +3,7 @@ export class PopupWithConfirm extends Popup {
   constructor (popupSelector, submitHandler) {
     super(popupSelector)
     this._submitHandler = submitHandler
+    this._form = this._popup.querySelector('.form')
   }
 
   openPopup (data) {
@@ -11,11 +12,13 @@ export class PopupWithConfirm extends Popup {
   }
 
   formLoading(isLoading) {
-    this._form = this._popup.querySelector('.form')
-    this._submitButton = this._form.querySelectorAll('.popup__button-submit')
+    this._submitButton = this._form.querySelector('.popup__button-submit')
 
     if (isLoading) {
-      this._submitButton.textContent = "Удаление..."
+      if (this._form.classList.contains('deleteCardForm')) {
+        this._submitButton.textContent = "Удаление..."
+        console.log(this._submitButton.textContent);
+      }
     } else {
       return this._submitButton.textContent
     }
@@ -23,7 +26,6 @@ export class PopupWithConfirm extends Popup {
 
   setEventListeners () {
     super.setEventListeners()
-    this._form = this._popup.querySelector('.form')
     this._form.addEventListener('submit', e => {
       e.preventDefault()
       this._submitHandler(this._data)

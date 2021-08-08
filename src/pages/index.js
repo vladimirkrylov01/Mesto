@@ -131,6 +131,7 @@ function addCardSubmitHandler(inputsData) {
 }
 
 function confirmDeletingSubmitHandler(element) {
+  popupWithConfirmationForm.formLoading(true)
   api.deleteCard(element.id)
     .then(() => {
       element.remove()
