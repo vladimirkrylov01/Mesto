@@ -68,6 +68,7 @@ export class Card {
 
   renderCard() {
     this.card = this._getTemplate()
+    this.updateLikes(this._likes)
 
     this.card.id = this._cardDataId
     this.card.querySelector('.card__title').textContent = this._name
@@ -85,7 +86,7 @@ export class Card {
       this.card.querySelector('.card__delete-button')
         .classList.remove('hidden')
 
-      this.updateLikes(this._likes)
+      // this.updateLikes(this._likes)
     }
 
     this._setEventListeners()
