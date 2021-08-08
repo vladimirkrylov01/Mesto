@@ -29,7 +29,6 @@ export class Api {
       .then (
         this._handleResponse
       )
-      .catch(console.error)
   }
 
   getUserInfo () {

@@ -21,10 +21,6 @@ import {
   popupAvatarForm, avatarEditBtn,
 } from "../scripts/utils/constants.js"
 
-let user;
-
-
-
 const api = new Api(
   'https://nomoreparties.co/v1',
   '7334389e-9ffb-4678-b7ba-2496fb9a2222',
@@ -38,7 +34,6 @@ Promise.all([
   api.getInitialCards(),
 ])
   .then(([userData, cards]) => {
-    user = userData._id
     setInitialUserData(userData)
     renderInitialCards(cards)
   })
@@ -50,7 +45,7 @@ function setInitialUserData(userData) {
     name: userData.name,
     about: userData.about,
     avatar: userData.avatar,
-    id: userData._id
+    _id: userData._id
   })
 }
 
@@ -69,7 +64,7 @@ function createCard(cardData) {
 
 // отрисовка шаблонных карточек
 const photoGridSection = new Section({
-  items: initialCards,
+  initialCards,
   renderer: data => {
     const card = createCard(data)
     photoGridSection.addItem(card)
@@ -80,8 +75,8 @@ function renderInitialCards(cards) {
   photoGridSection.renderItems(cards)
 }
 
-function deleteCardClickHandler(card) {
-  popupWithConfirmationForm.openPopup(card)
+function deleteCardClickHandler(card,element) {
+  popupWithConfirmationForm.openPopup(card,element)
 }
 
 function cardImageClickHandler(title, link) {
@@ -93,10 +88,11 @@ function likeClickHandler(card) {
     .then((response) => {
       card.updateLikes(response.likes)
     })
-    .catch(console.error);
+    .catch(console.error)
 }
 
 function editProfileSubmitHandler(inputsData) {
+  popupWithEditForm.formLoading(true) // меняем текст кнопки
   api.updateUserInfo({
     name: inputsData.name,
     about: inputsData.profession
@@ -106,9 +102,11 @@ function editProfileSubmitHandler(inputsData) {
       popupWithEditForm.closePopup()
     })
     .catch(console.error)
+    .finally(() => popupWithEditForm.formLoading(false))
 }
 
 function editAvatarSubmitHandler(inputData) {
+  popupWithAvatarForm.formLoading(true)
   api.updateAvatar({
     avatar: inputData.avatar
   })
@@ -117,9 +115,11 @@ function editAvatarSubmitHandler(inputData) {
       popupWithAvatarForm.closePopup()
     })
     .catch(console.error)
+    .finally(() => popupWithAvatarForm.formLoading(false))
 }
 
 function addCardSubmitHandler(inputsData) {
+  popupWithAddForm.formLoading(true)
   api.addNewCard(inputsData)
     .then((card) => {
       const newCard = createCard(card)
@@ -127,16 +127,19 @@ function addCardSubmitHandler(inputsData) {
       popupWithAddForm.closePopup()
     })
     .catch(console.error)
+    .finally(() => popupWithAddForm.formLoading(false))
 }
 
-function confirmDeletingSubmitHandler() {
-  const card = popupWithConfirmationForm.getId()
-  api.deleteCard(card._id)
+function confirmDeletingSubmitHandler(element) {
+  api.deleteCard(element.id)
     .then(() => {
-      card.remove()
+      element.remove()
+      element = null
+
       popupWithConfirmationForm.closePopup()
     })
     .catch(console.error)
+    .finally(() => popupWithConfirmationForm.formLoading(false))
 }
 
 // ===========================================================================

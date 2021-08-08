@@ -13,12 +13,12 @@ export class UserInfo {
     }
   }
 
-  setUserInfo ({name, about, avatar, id}) {
+  setUserInfo ({name, about, avatar, _id}) {
     if (name) { this._name.textContent = name }
     if (about) { this._profession.textContent = about }
     // if (avatar) { this._avatar.setAttribute('style', `background-image: url('${avatar}')`)  }
     if (avatar) { this._avatar.src = avatar }
-    if (id) { this.userId = id }
+    if (_id) { this.userId = _id }
   }
 
   getUserId() {

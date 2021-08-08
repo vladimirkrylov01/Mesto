@@ -6,7 +6,7 @@ export class PopupWithForm extends Popup {
     this._submitHandler = _submitHandler
     this._form = this._popup.querySelector('.form')
     this._inputs = [...this._form.querySelectorAll('.form__input')]
-    this._submitButton = this._form.querySelectorAll('.popup__button-submit')
+    this._submitButton = this._form.querySelector('.popup__button-submit')
     this._initialText = this._submitButton.textContent
   }
 
@@ -20,7 +20,11 @@ export class PopupWithForm extends Popup {
 
   formLoading(isLoading) {
     if (isLoading) {
-      this._submitButton.textContent = "Сохранение..."
+      if (this._form.classList.contains('addPopupForm')) {
+        this._submitButton.textContent = "Cоздание..."
+      } else {
+        this._submitButton.textContent = "Сохранение..."
+      }
     } else {
       this._submitButton.textContent = this._initialText
     }
@@ -36,7 +40,6 @@ export class PopupWithForm extends Popup {
   }
 
   closePopup() {
-    this.formLoading(false)
     this._form.reset()
     super.closePopup()
   }

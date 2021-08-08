@@ -5,13 +5,20 @@ export class PopupWithConfirm extends Popup {
     this._submitHandler = submitHandler
   }
 
-  openPopup (id) {
+  openPopup (data) {
     super.openPopup()
-    this._id = id
+    this._data = data
   }
 
-  getId () {
-    return this._id
+  formLoading(isLoading) {
+    this._form = this._popup.querySelector('.form')
+    this._submitButton = this._form.querySelectorAll('.popup__button-submit')
+
+    if (isLoading) {
+      this._submitButton.textContent = "Удаление..."
+    } else {
+      return this._submitButton.textContent
+    }
   }
 
   setEventListeners () {
@@ -19,7 +26,7 @@ export class PopupWithConfirm extends Popup {
     this._form = this._popup.querySelector('.form')
     this._form.addEventListener('submit', e => {
       e.preventDefault()
-      this._submitHandler()
+      this._submitHandler(this._data)
     })
   }
 }
