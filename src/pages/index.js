@@ -75,8 +75,8 @@ function renderInitialCards(cards) {
   photoGridSection.renderItems(cards)
 }
 
-function deleteCardClickHandler(card,element) {
-  popupWithConfirmationForm.openPopup(card,element)
+function deleteCardClickHandler(card) {
+  popupWithConfirmationForm.openPopup(card)
 }
 
 function cardImageClickHandler(title, link) {
@@ -132,11 +132,9 @@ function addCardSubmitHandler(inputsData) {
 
 function confirmDeletingSubmitHandler(element) {
   popupWithConfirmationForm.formLoading(true)
-  api.deleteCard(element.id)
+  api.deleteCard(element.getId())
     .then(() => {
-      element.remove()
-      element = null
-
+      element.removeCard()
       popupWithConfirmationForm.closePopup()
     })
     .catch(console.error)
@@ -166,7 +164,9 @@ popupWithAddForm.setEventListeners()
 const popupWithAvatarForm = new PopupWithForm('.popup-edit-avatar', editAvatarSubmitHandler)
 popupWithAvatarForm.setEventListeners()
 
-const popupWithConfirmationForm = new PopupWithConfirm('.popup-type-delete', confirmDeletingSubmitHandler)
+const popupWithConfirmationForm = new PopupWithConfirm('.popup-type-delete', (card) => {
+  confirmDeletingSubmitHandler(card)
+})
 popupWithConfirmationForm.setEventListeners()
 
 // ===========================================================================

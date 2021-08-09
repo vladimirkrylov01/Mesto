@@ -8,9 +8,9 @@ export class PopupWithConfirm extends Popup {
     this._initialText = this._submitButton.textContent
   }
 
-  openPopup (data) {
+  openPopup (card) {
     super.openPopup()
-    this._data = data
+    this._card = card
   }
 
   formLoading(isLoading) {
@@ -28,7 +28,7 @@ export class PopupWithConfirm extends Popup {
     this._form.addEventListener('submit', e => {
       this.formLoading(true)
       e.preventDefault()
-      this._submitHandler(this._data)
+      this._submitHandler(this._card)
     })
   }
 }

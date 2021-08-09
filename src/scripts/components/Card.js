@@ -32,13 +32,12 @@ export class Card {
     this.card.querySelector('.card__like')
       .addEventListener('click', () => this._like())
     this.card.querySelector('.card__delete-button')
-      .addEventListener('click', () => this._handleDeleteCardClick(this.card))
+      .addEventListener('click', () => this._handleDeleteCardClick(this))
   }
 
   getId() {
     return this._cardDataId
   }
-
 
   getIsLiked() {
     return this._likes.some(like => like._id === this._currentUserID)
@@ -62,8 +61,9 @@ export class Card {
     }
   }
 
-  remove() {
+  removeCard() {
     this.card.remove()
+    this.card = null
   }
 
   renderCard() {
